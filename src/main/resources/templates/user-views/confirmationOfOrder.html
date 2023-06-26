@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="template">
+<head>
+    <title>Подтверждение</title>
+    <link th:href="@{/css/confirmations.css}" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+<div id="background" layout:fragment="content1">
+    <div id="mainDiv">
+        <div class="d-flex">
+            <div style="margin-top: 30px;" class="left purpleColor">Авиакомпания</div>
+            <div style="margin-top: 30px;" class="right purpleColor">Номер рейса</div>
+        </div>
+        <div class="d-flex">
+            <div th:if="${condition}">
+                <div style="margin-top: 60px;" class="left spaceBetween"><img width="160" th:src="${airTicket.getDirectFlight().getAirline().getPathToImg()}" alt="Изображение"></div>
+                <div class="right spaceBetween centuryFont" th:text="${airTicket.getDirectFlight().getFlightNumber()}"></div>
+            </div>
+            <div th:unless="${condition}">
+                <div style="margin-top: 60px;" class="left spaceBetween"><img width="160" th:src="${airTicket.getTransitFlight().getAirline().getPathToImg()}" alt="Изображение"></div>
+                <div class="right spaceBetween centuryFont" th:text="${airTicket.getTransitFlight().getFlightNumber()}"></div>
+            </div>
+        </div>
+        <div class="d-flex">
+            <div th:if="${condition}">
+                <div class="left centuryFont time"
+                     th:text="${#temporals.format(airTicket.getDirectFlight().getArrivalTime(), 'HH:mm')}"></div>
+                <div style="position: absolute; left: 1000px;" class="centuryFont date"
+                     th:text="${#temporals.format(airTicket.getDirectFlight().getArrivalDate(), 'dd.MM.yyyy')}"></div>
+                <div class="lineDiv">
+                    <i class="fa fa-plane" aria-hidden="true"></i>
+                    <span class="timeOnWay" th:text="${timeOnWay}"></span>
+                    <div class="line"></div>
+                </div>
+                <div class="right centuryFont time"
+                     th:text="${#temporals.format(airTicket.getDirectFlight().getDepartureTime(), 'HH:mm')}"></div>
+                <div style="position: absolute; left: 535px;" class="centuryFont date"
+                     th:text="${#temporals.format(airTicket.getDirectFlight().getDepartureDate(), 'dd.MM.yyyy')}"></div>
+            </div>
+            <div th:unless="${condition}">
+                <div class="left centuryFont time"
+                     th:text="${#temporals.format(airTicket.getTransitFlight().getArrivalTime(), 'HH:mm')}"></div>
+                <div style="position: absolute; left: 1000px;" class="centuryFont date"
+                     th:text="${#temporals.format(airTicket.getTransitFlight().getArrivalDate(), 'dd.MM.yyyy')}"></div>
+                <div class="lineDiv">
+                    <i class="fa fa-plane" aria-hidden="true"></i>
+                    <span class="timeOnWay" th:text="${timeOnWay}"></span>
+                    <div class="line"></div>
+                </div>
+                <div class="right centuryFont time"
+                     th:text="${#temporals.format(airTicket.getTransitFlight().getDepartureTime(), 'HH:mm')}"></div>
+                <div style="position: absolute; left: 535px;" class="centuryFont date"
+                     th:text="${#temporals.format(airTicket.getTransitFlight().getDepartureDate(), 'dd.MM.yyyy')}"></div>
+            </div>
+        </div>
+        <div th:if="${condition}">
+            <table>
+                <tr>
+                    <td class="td1 purpleColor">Аэропорт</td>
+                    <td class="td2"><span
+                            th:text="${airTicket.getDirectFlight().getArrivalCity()}"></span><span> - </span><span
+                            th:text="${airTicket.getDirectFlight().getDepartureCity()}"></span></td>
+                    <td class="td3 purpleColor">Аэропорт</td>
+                </tr>
+                <tr style="height: 60px;">
+                    <td class="td1" th:text="${airTicket.getDirectFlight().getArrivalAirport()}"></td>
+                    <td class="td2" th:text="${transfers}"></td>
+                    <td class="td3" th:text="${airTicket.getDirectFlight().getDepartureAirport()}"></td>
+                </tr>
+            </table>
+        </div>
+        <div th:unless="${condition}">
+            <table>
+                <tr>
+                    <td class="td1 purpleColor">Аэропорт</td>
+                    <td class="td2"><span
+                            th:text="${airTicket.getTransitFlight().getArrivalCity()}"></span><span> - </span><span
+                            th:text="${airTicket.getTransitFlight().getDepartureCity()}"></span></td>
+                    <td class="td3 purpleColor">Аэропорт</td>
+                </tr>
+                <tr>
+                    <td class="td1" th:text="${airTicket.getTransitFlight().getArrivalAirport()}"></td>
+                    <td class="td2">Пересадки</td>
+                    <td class="td3" th:text="${airTicket.getTransitFlight().getDepartureAirport()}"></td>
+                </tr>
+                <tr>
+                    <td colspan="3" id="td" th:text="${transfers}"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="horizontalLine1"></div>
+        <div class="top purpleColor">Пассажир</div>
+        <div class="top"><span th:text="${airTicket.getPassenger().getUser().getLastName()}"></span><span> </span><span
+                th:text="${airTicket.getPassenger().getUser().getFirstName()}"></span></div>
+        <div class="top purpleColor">Номер паспорта</div>
+        <div class="top centuryFont" th:text="${airTicket.getPassenger().getPassportNumber()}"></div>
+        <table id="table">
+            <div class="horizontalLine2"></div>
+            <tr>
+                <td class="td">Тип билета</td>
+                <td class="td">Место</td>
+                <td class="td">Стоимость</td>
+            </tr>
+            <div class="horizontalLine3"></div>
+            <tr>
+                <td class="td" th:text="${airTicket.getTypeOfTicket()}"></td>
+                <td class="td centuryFont" th:text="${airTicket.getSeatNumber()}"></td>
+                <td class="td centuryFont"><span th:text="${airTicket.getPrice()}"></span><span> BYN</span></td>
+            </tr>
+        </table>
+        <div id="verticalLine1"></div>
+        <div id="verticalLine2"></div>
+        <div th:if="${condition}">
+            <form method="post" th:action="@{/mainForUser/chooseCard(flightNumber=${airTicket.getDirectFlight().getFlightNumber()}, typeOfTicket=${airTicket.getTypeOfTicket()}, seatNumber=${airTicket.getSeatNumber()}, price=${airTicket.getPrice()})}">
+                <button type="submit" id="buyBtn1" class="btn buyBtn">Оплатить</button>
+            </form>
+        </div>
+        <div th:unless="${condition}">
+            <form method="post" th:action="@{/mainForUser/chooseCard(flightNumber=${airTicket.getTransitFlight().getFlightNumber()}, typeOfTicket=${airTicket.getTypeOfTicket()}, seatNumber=${airTicket.getSeatNumber()}, price=${airTicket.getPrice()})}">
+                <button type="submit" id="buyBtn2" class="btn buyBtn">Оплатить</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

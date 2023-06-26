@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="template">
+<head>
+  <meta charset="UTF-8">
+  <title>Добавление транзитного рейса</title>
+  <link th:href="@{/css/styles.css}" rel="stylesheet">
+  <script type="text/javascript" src="../js/flights.js" th:src="@{/js/flight.js}" charset="utf-8"></script>
+</head>
+<body class="mainFont">
+<div layout:fragment="content1">
+  <div class="col-md-6 offset-3 mt-3">
+    <form id="form" class="form-control" method="post" th:action="@{save}" >
+      <div class="mb-3 mt-3">
+        <label for="flightNumber" class="form-label">Номер рейса:</label>
+        <input id="flightNumber" type="text" name="flightNumber" class="form-control" th:errorClass="error" th:field="${transitFlight.flightNumber}">
+        <div class="text-danger" th:if="${#fields.hasErrors('transitFlight.flightNumber')}" th:errors="${transitFlight.flightNumber}">Error</div>
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="airlines" class="form-label">Авиакомпания:</label>
+        <select id="airlines" class="form-select" aria-label="Disabled select example" th:field="${transitFlight.airline}">
+          <option th:each="airline :${listAirlines}" th:value="${airline.id}" th:text="${airline.airlineName}"}></option>
+        </select>
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="arrivalAirport" class="form-label">Аэропорт вылета:</label>
+        <input id="arrivalAirport" type="text" name="arrivalAirport" class="form-control" th:errorClass="error" th:field="${transitFlight.arrivalAirport}">
+        <div class="text-danger" th:if="${#fields.hasErrors('transitFlight.arrivalAirport')}" th:errors="${transitFlight.arrivalAirport}">Error</div>
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="departureAirport" class="form-label">Аэропорт посадки:</label>
+        <input id="departureAirport" type="text" name="departureAirport" class="form-control" th:errorClass="error" th:field="${transitFlight.departureAirport}">
+        <div class="text-danger" th:if="${#fields.hasErrors('transitFlight.departureAirport')}" th:errors="${transitFlight.departureAirport}">Error</div>
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="arrivalCity" class="form-label">Город вылета:</label>
+        <input id="arrivalCity" type="text" name="arrivalCity" class="form-control" th:errorClass="error" th:field="${transitFlight.arrivalCity}">
+        <div class="text-danger" th:if="${#fields.hasErrors('transitFlight.arrivalCity')}" th:errors="${transitFlight.arrivalCity}">Error</div>
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="departureCity" class="form-label">Город посадки:</label>
+        <input id="departureCity" type="text" name="departureCity" class="form-control" th:errorClass="error" th:field="${transitFlight.departureCity}">
+        <div class="text-danger" th:if="${#fields.hasErrors('transitFlight.departureCity')}" th:errors="${transitFlight.departureCity}">Error</div>
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="arrivalDate" class="form-label">Дата вылета:</label>
+        <input id="arrivalDate" type="date" name="arrivalDate" class="form-control" th:errorClass="error" th:field="${transitFlight.arrivalDate}">
+        <div class="text-danger" th:if="${#fields.hasErrors('transitFlight.arrivalDate')}" th:errors="${transitFlight.arrivalDate}">Error</div>
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="departureDate" class="form-label">Дата посадки:</label>
+        <input id="departureDate" type="date" name="departureDate" class="form-control" th:errorClass="error" th:field="${transitFlight.departureDate}">
+        <div class="text-danger" th:if="${#fields.hasErrors('transitFlight.departureDate')}" th:errors="${transitFlight.departureDate}">Error</div>
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="arrivalTime" class="form-label">Время вылета:</label>
+        <input id="arrivalTime" type="time" name="arrivalTime" class="form-control" th:errorClass="error" th:field="${transitFlight.arrivalTime}">
+        <div class="text-danger" th:if="${#fields.hasErrors('transitFlight.arrivalTime')}" th:errors="${transitFlight.arrivalTime}">Error</div>
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="departureTime" class="form-label">Время посадки:</label>
+        <input id="departureTime" type="time" name="departureTime" class="form-control" th:errorClass="error" th:field="${transitFlight.departureTime}">
+        <div class="text-danger" th:if="${#fields.hasErrors('transitFlight.departureTime')}" th:errors="${transitFlight.departureTime}">Error</div>
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="priceOfTickets" class="form-label">Стоимость билета:</label>
+        <input id="priceOfTickets" type="text"  name="priceOfTickets" class="form-control" th:field="${transitFlight.priceOfTickets}" pattern="^0.0|(\d+(\.\d{0,2})?)$" required>
+        <label id="errorLabel" class="errorLabel">Поле 'Стоимость билета' должно содержать целочисленные значения и дробные в формате __.__</label>
+      </div>
+      <div class="mb-3 mt-3 form-outline">
+        <label class="form-label" for="countOfTransfers">Количество пересадок</label>
+        <input style="width: 4rem;" min="1" max="10" type="number" name="transferList" id="countOfTransfers" class="form-control" th:field="${transitFlight.countOfTransfers}" required/>
+        <label id="errorLabelTransfer" class="errorLabel">Поле не должно быть пустым</label>
+      </div>
+      <div class="mb-3 mt-3">
+        <button id="createTransitFlight" type="submit" class="btn btn-primary">Добавить</button>
+      </div>
+    </form>
+  </div>
+</div>
+</body>
+</html>

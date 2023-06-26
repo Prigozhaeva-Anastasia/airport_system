@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="template">
+<head>
+    <title>Выбор карты</title>
+    <link th:href="@{/css/chooseCard.css}" rel="stylesheet">
+    <script type="text/javascript" src="../js/chooseCard.js" th:src="@{/js/chooseCard.js}"
+            charset="windows-1251"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+<div id="background" layout:fragment="content1">
+    <div id="mainDiv" class="card">
+        <div id="head" class="card-header head bg-dark resultOfSearch">Выберите карту:</div>
+        <div class="text-danger insufficientFunds">Недостаточно средств.</div>
+        <div class="text-danger insufficientFunds">Для того, чтобы продолжить, выберите другую карту</div>
+        <div id="errorMessage1" class="errorMessage">Привязанных карт нет</div>
+        <div id="errorMessage2" class="errorMessage">Для того, чтобы привязать карту необходимо вернуться на вкладку 'Мои карты'</div>
+        <div id="wrapper" class="card-body" th:each="card:${listCards}">
+            <form method="post" th:action="@{/mainForUser/payment(flightNumber=${flightNumber}, typeOfTicket=${airTicket.getTypeOfTicket()}, seatNumber=${airTicket.getSeatNumber()}, price=${airTicket.getPrice()}, cardId=${card.getId()})}">
+                <button type="submit" id="cardBtn" class="btn cardBtn">
+                    <span id="airTicketPrice" class="airTicketPrice" th:text="${airTicket.getPrice()}" hidden="hidden"></span>
+                    <span id="cardId" th:text="${card.getId()}" hidden="hidden"></span>
+                    <div id="card">
+                        <div id="visa">VISA</div>
+                        <div><span id="balance" class="balance" th:text="${card.getBalance()}"></span><span  class="balanceLabel"> BYN</span></div>
+                        <div id="cardNumberAndTermOfUse"><span id="cardNumber" class="cardNumber" th:text="${card.getNumber()}"></span><span>       </span><span id="termOfUse" th:text="${card.getMonth()}"></span><span> / </span><span th:text="${card.getYear()}"></span></div>
+                    </div>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

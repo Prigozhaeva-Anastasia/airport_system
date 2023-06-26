@@ -1,0 +1,153 @@
+body {
+    background-image: url("../images/img/fontInfo.png");
+    background-size: 1560px 900px;
+}
+#mainDiv {
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 915px;
+    height: 607px;
+    margin-top: 27px;
+    margin-left: 300px;
+}
+#main {
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 915px;
+    height: 607px;
+    margin-top: 25px;
+    margin-left: 300px;
+}
+#imgDiv {
+    border-radius: 20px;
+    background-color: rgba(95, 94, 94);
+    width: 220px;
+    height: 183px;
+    margin-left: 325px;
+    position: relative;
+    top: 35px;
+}
+img {
+    width: 196px;
+    height: 169px;
+    margin-top: 14px;
+    position: relative;
+    left: 10px;
+}
+table {
+    color: white;
+    font-size: 24px;
+    font-family: Georgia;
+    margin-left: 190px;
+    position: relative;
+    top: 140px;
+}
+#table {
+    color: white;
+    font-size: 24px;
+    font-family: Georgia;
+    margin-left: 260px;
+    position: relative;
+    top: 100px;
+}
+.font {
+    font-family: "Century751 SeBd BT";
+}
+.col1 {
+    width: 320px;
+    height: 50px;
+}
+.col11 {
+    width: 260px;
+    height: 45px;
+}
+#change{
+    background-color: #A358E0;
+    color: white;
+    font-family: Georgia;
+    border-radius: 20px;
+    width: 170px;
+    height: 35px;
+    margin-top: 170px;
+    margin-left: 363px;
+    font-size: 18px;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0);
+}
+#change:hover{
+    background-color: #7C44AA;
+}
+#edit{
+    background-color: #A358E0;
+    color: white;
+    font-family: Georgia;
+    border-radius: 20px;
+    width: 170px;
+    height: 35px;
+    margin-top: 160px;
+    margin-left: 353px;
+    font-size: 18px;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0);
+}
+#edit:hover{
+    background-color: #7C44AA;
+}
+#passwordConfirmationDiv {
+    display: none;
+}
+#confirmation {
+    color: white;
+    font-size: 24px;
+    font-family: Georgia;
+}
+#formUpdateAdmin {
+    color: white;
+    font-size: 18px;
+    font-family: Georgia;
+}
+input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #7C44AA;
+    color: #615E5E;
+    font-size: 24px;
+    font-family: Georgia;
+}
+input:focus {
+    outline: none;
+    border-bottom: 1px solid white;
+}
+.font {
+    font-family: "Century751 SeBd BT";
+}
+@charset "UTF-8";
+.errorLabel {
+    color: rgba(255, 96, 96);
+}
+#lastNameError, #firstNameError, #passwordError, #passwordConfirmationError {
+    display: none;
+}
+#passwordConfirmationError {
+    margin-top: -30px;
+}
+.error {
+    border-bottom: 1px solid rgba(255, 63, 63, 0.7);
+}
+#confirmation{
+    margin-right: 40px;
+}
+.divForLabel {
+    margin-left: 220px;
+    font-size: 24px;
+}
+.input {
+    position: absolute;
+    left: 440px;
+}
+.wrapper {
+    position: relative;
+    top: 130px;
+    height: 80px;
+}
+.confirm {
+    width: 40px;
+}

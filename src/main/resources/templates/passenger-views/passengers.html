@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="template">
+<head>
+  <title>Пассажиры</title>
+  <link th:href="@{/css/styles.css}" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body class="mainFont">
+<div layout:fragment="content1">
+  <div class="container mt-3">
+    <div class="card">
+      <div class="card-header head">Список пассажиров</div>
+      <div class="card-body">
+        <div class="search">
+          <form id="formSearch" method="get" th:action="@{index}">
+            <input id="searchField" type="text" class="col-11" name="keyword" placeholder="   Введите имя" th:value="${keyword}">
+            <button type="submit"/>
+          </form>
+        </div>
+        <table class="table">
+          <thead>
+          <tr class="text-center">
+            <th><a id="sortedFieldByLastName" class="nav-link dropdown-toggle menu" th:href="@{/passengers/sortByLastName}">Фамилия</a></th>
+            <th>Имя</th>
+            <th>Номер паспорта</th>
+            <th>Телефон</th>
+            <th>Действия</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr class="text-center" th:each="passenger:${listPassengers}">
+            <td th:text="${passenger.getUser().getLastName()}"></td>
+            <td th:text="${passenger.getUser().getFirstName()}"></td>
+            <td th:text="${passenger.getPassportNumber()}"></td>
+            <td th:text="${passenger.getPhoneNumber()}"></td>
+            <td>
+              <a class="btn ticket" th:href="@{/airTickets/index(passengerId=${passenger.getId()})}"></a>
+              <a class="btn btn-outline-dark" th:href="@{/passengers/formForMoreDetails(passengerId=${passenger.getId()})}">Подробнее</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="template">
+<head>
+    <title>Схема самолета</title>
+    <link th:href="@{/css/planeSchem.css}" rel="stylesheet">
+    <script type="text/javascript" src="../js/planeScheme.js" th:src="@{/js/planeSchem.js}"
+            charset="windows-1251"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+<div id="background" layout:fragment="content1">
+    <div th:each="airTicket:${listAirTicketsForDirectFlight}" hidden>
+        <div id="seatNumberOfDirectFlight" class="occupiedSeatNumbers" th:text="${airTicket.getSeatNumber()}"></div>
+    </div>
+    <div th:each="airTicket:${listAirTicketsForTransitFlight}" hidden>
+        <div id="seatNumberOfTransitFlight" class="occupiedSeatNumbers" th:text="${airTicket.getSeatNumber()}"></div>
+    </div>
+    <div id="scheme">
+        <div class="left wrapper">
+            <div th:each="upperLeftNumbers:${upperLeftWingOfAirplane}">
+                <form method="post" th:action="@{/mainForUser/confirmationOfOrder(seatNumber=${upperLeftNumbers}, flightNumber=${flightNumber})}">
+                    <button id="upperLeftWingOfAirplane" class="seatNumbers" type="submit"
+                            th:text="${upperLeftNumbers}"></button>
+                </form>
+            </div>
+            <div class="businessClass">
+                <div th:each="bottomLeftNumbers:${bottomLeftWingOfAirplane}">
+                    <form method="post" th:action="@{/mainForUser/confirmationOfOrder(seatNumber=${bottomLeftNumbers}, flightNumber=${flightNumber})}">
+                        <button id="bottomLeftWingOfAirplane" class="seatNumbers" type="submit"
+                                th:text="${bottomLeftNumbers}"></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="right wrapper">
+            <div th:each="upperRightNumbers:${upperRightWingOfAirplane}">
+                <form method="post" th:action="@{/mainForUser/confirmationOfOrder(seatNumber=${upperRightNumbers}, flightNumber=${flightNumber})}">
+                    <button id="upperRightWingOfAirplane" class="seatNumbers" type="submit"
+                            th:text="${upperRightNumbers}"></button>
+                </form>
+            </div>
+            <div style="margin-left: 150px;" class="businessClass">
+                <div th:each="bottomRightNumbers:${bottomRightWingOfAirplane}">
+                    <form method="post" th:action="@{/mainForUser/confirmationOfOrder(seatNumber=${bottomRightNumbers}, flightNumber=${flightNumber})}">
+                        <button id="bottomRightWingOfAirplane" class="seatNumbers" type="submit"
+                                th:text="${bottomRightNumbers}"></button>
+                    </form>
+                </div>
+            </div>
+            <div id="designations">
+                <div>* места 1-40 - эконом-класс</div>
+                <div>* места 41-48 - бизнес-класс</div>
+                <div style="color: rgba(143, 52, 228, 0.6);">* забронированные места</div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="template">
+<head>
+    <title>Обновление данных об авиакомпаниях</title>
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
+    <script type="text/javascript" src="../js/formaUpdateForAirline.js" th:src="@{/js/formaUpdateForAirline.js}"></script>
+</head>
+<body class="mainFont">
+<div layout:fragment="content1">
+    <div class="col-md-6 offset-3 mt-3">
+        <form class="form-control" method="post" th:action="@{update}" th:object="${airline}">
+            <input type="text" name="id" th:value="${airline.getId()}" hidden>
+            <div class="mb-3 mt-3">
+                <label for="airlineName" class="form-label">Название авиакомпании:</label>
+                <input id="airlineName" type="text" name="airlineName" class="form-control" th:errorClass="error"
+                       th:value="${airline.airlineName}">
+                <div class="text-danger" th:if="${#fields.hasErrors('airlineName')}" th:errors="${airline.airlineName}">Error</div>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="rating" class="form-label">Рейтинг:</label>
+                <input id="rating" type="text" name="rating" class="form-control" th:value="${airline.getRating()}" pattern="^([0-4](\.\d)?)|5$">
+                <label id="errorLabel" class="errorLabel">Поле 'Рейтинг' должно содержать целочисленные значения и дробные в формате __._ в диапазоне от 0 до 5</label>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="logotype" class="form-label">Изображение:</label>
+                <div><img id="logotype" width="200" th:src="${airline.getPathToImg()}" accept="image/*" alt="Изображение"></div>
+            </div>
+            <div class="mb-3 mt-3">
+                <button id="addLogo" type="button" class="btn btn-outline-dark">Изменить изображение</button>
+            </div>
+            <div class="mb-3 mt-3">
+                <input id="logo" type="file" name="pathToImg" class="form-control" th:value="${airline.getPathToImg()}">
+                <input id="hiddenLog" type="hidden" th:field="${airline.pathToImg}">
+            </div>
+            <button id="update" type="submit" class="btn btn-primary">Обновить</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

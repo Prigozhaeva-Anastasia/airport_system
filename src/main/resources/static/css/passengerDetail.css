@@ -1,0 +1,97 @@
+body {
+    background-image: url("../images/img/fontInfo.png");
+    background-size: 1560px 900px;
+}
+#mainDiv {
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 915px;
+    height: 607px;
+    margin-top: 27px;
+    margin-left: 300px;
+}
+#imgDiv {
+    border-radius: 20px;
+    background-color: rgba(95, 94, 94);
+    width: 178px;
+    height: 178px;
+    margin-left: 25px;
+    position: relative;
+    top: 35px;
+}
+img {
+    width: 230px;
+    height: 160px;
+    margin-top: 10px;
+    position: relative;
+    right: 25px;
+}
+table {
+    color: white;
+    font-size: 24px;
+    font-family: Georgia;
+}
+#tableForUser {
+    margin-left: 300px;
+    margin-top: -200px;
+}
+#table {
+    margin-left: 300px;
+    margin-top: -155px;
+}
+.font {
+    font-family: "Century751 SeBd BT";
+}
+.col1 {
+    width: 300px;
+    height: 45px;
+}
+#personalData {
+    margin-top: 50px;
+    color: white;
+    font-size: 28px;
+    font-family: Georgia;
+}
+#update:before{
+    content: "\f040";
+    font-family: FontAwesome;
+    font-size: 24px;
+    color: black;
+}
+#update:hover {
+    background-color: rgba(166, 165, 165);
+}
+#update {
+    margin-top: -70px;
+    margin-left: 230px;
+}
+#cardsBtn {
+    position: absolute;
+    top: 310px;
+    left: 330px;
+    width: 165px;
+    height: 50px;
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 20px;
+    font-family: Georgia;
+}
+#cardsBtn:hover {
+    background-color: rgba(166, 165, 165);
+}
+#ordersBtn{
+    position: absolute;
+    top: 370px;
+    left: 330px;
+    width: 165px;
+    height: 50px;
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 20px;
+    font-family: Georgia;
+}
+#ordersBtn:hover {
+    background-color: rgba(166, 165, 165);
+}

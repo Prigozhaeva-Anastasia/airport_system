@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="template">
+<head>
+    <title>Пересадки</title>
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
+    <script type="text/javascript" src="../js/transfers.js" th:src="@{/js/transfers.js}" charset="windows-1251"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body class="mainFont">
+<div layout:fragment="content1">
+    <div class="container mt-3">
+        <div class="card">
+            <div class="card-header head">Список пересадок</div>
+            <div class="card-body">
+                <div id="inline">
+                    <form id="formBtns">
+                        <a id="createBtn" onclick="localStorage.clear()" class="btn" th:href="@{/transfers/formCreate(transitFlightId=${transitFlight.getId()})}"></a>
+                    </form>
+                </div>
+                <table class="table">
+                    <thead>
+                    <tr class="text-center">
+                        <th>Город пересадки</th>
+                        <th>Время</th>
+                        <th>Действия</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="text-center" th:each="transfer:${listTransfers}">
+                        <td th:text="${transfer.nameOfCity}"></td>
+                        <td th:text="${#temporals.format(transfer.getArrivalTime(), 'HH:mm')}"></td>
+                        <td>
+                            <a class="btn btn-danger" onclick="return confirm('Вы действительно хотите удалить данный пункт пересадки?')"
+                               th:href="@{/transfers/delete(transferId=${transfer.getId()}, transitFlightId=${transitFlight.getId()})}"></a>
+                            <a class="btn btn-primary output" th:href="@{/transfers/formUpdate(transferId=${transfer.getId()})}"></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+.mainFont {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.menu {
+    font-size: 20px;
+    color: white;
+    width: 645px;
+}
+.menu:hover {
+    background-color: rgba(166, 165, 165);
+    color: rgba(143, 52, 228, 0.7);
+}
+#label {
+    margin-left: 120px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 30px;
+    color: white;
+}
+#btnTable {
+    border: 1px solid rgba(143, 52, 228, 0.7);
+    margin-left: 120px;
+}
+.td {
+    border: 1px solid rgba(143, 52, 228, 0.7);
+}
+#table {
+    position: relative;
+    top: 15px;
+    font-size: 18px;
+    font-family: Georgia;
+}
+td {
+    color: white;
+}
+#th {
+    border-bottom: 2px solid white;
+}
+.centuryFont {
+    font-family: "Century751 SeBd BT";
+}
+.btn-danger:before{
+    content: "\f014";
+    font-family: FontAwesome;
+    font-size: 16px;
+    color: black;
+}
+.dropdown-item:hover {
+    color: rgba(143, 52, 228, 0.7);
+}
+#cancellationOfAirTicket {
+    color: rgba(249, 81, 81, 0.8);
+    font-family: "Century751 SeBd BT";
+}

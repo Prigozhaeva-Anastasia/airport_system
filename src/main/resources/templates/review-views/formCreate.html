@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="template">
+<head>
+    <title>Информация о билете</title>
+    <link th:href="@{/css/formCreateForReview.css}" rel="stylesheet">
+    <script type="text/javascript" src="../js/formCreateForReview.js" th:src="@{/js/formCreateForReview.js}"
+            charset="windows-1251"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+<div id="background" layout:fragment="content1">
+    <form method="post" th:action="@{/reviews/save(airlineId=${airline.getId()})}">
+        <button id="saveBtn"><i class="fa fa-check" aria-hidden="true"></i></button>
+        <div id="mainLabel">Оцените, пожалуйста, качество услуг, предоставляемых авиакомпанией</div>
+        <div id="airlineName" th:text="${airline.getAirlineName()}"></div>
+        <div class="wrapper">Скорость регистрации на рейс и посадки на борт:</div>
+        <div class="wrapper">
+            <input id="checkInSpeed" type="text" hidden="hidden" th:field="${review.checkInSpeed}">
+            <div class="rating" data-total-value="0">
+                <div class="rating_item1" data-item-value="5">★</div>
+                <div class="rating_item1" data-item-value="4">★</div>
+                <div class="rating_item1" data-item-value="3">★</div>
+                <div class="rating_item1" data-item-value="2">★</div>
+                <div class="rating_item1" data-item-value="1">★</div>
+            </div>
+        </div>
+        <div class="wrapper">Состояние и чистота салона самолета:</div>
+        <div class="wrapper">
+            <input id="state_of_salon" type="text" hidden="hidden" th:field="${review.state_of_salon}">
+            <div class="rating" data-total-value="0">
+                <div class="rating_item2" data-item-value="5">★</div>
+                <div class="rating_item2" data-item-value="4">★</div>
+                <div class="rating_item2" data-item-value="3">★</div>
+                <div class="rating_item2" data-item-value="2">★</div>
+                <div class="rating_item2" data-item-value="1">★</div>
+            </div>
+        </div>
+        <div class="wrapper">Качество работы экипажа:</div>
+        <div class="wrapper">
+            <input id="crewWork" type="text" hidden="hidden" th:field="${review.crewWork}">
+            <div class="rating" data-total-value="0">
+                <div class="rating_item3" data-item-value="5">★</div>
+                <div class="rating_item3" data-item-value="4">★</div>
+                <div class="rating_item3" data-item-value="3">★</div>
+                <div class="rating_item3" data-item-value="2">★</div>
+                <div class="rating_item3" data-item-value="1">★</div>
+            </div>
+        </div>
+        <div class="wrapper">Качество бортового питания:</div>
+        <div class="wrapper">
+            <input id="qualityOfFlightMeals" type="text" hidden="hidden" th:field="${review.qualityOfFlightMeals}">
+            <div class="rating" data-total-value="0">
+                <div class="rating_item4" data-item-value="5">★</div>
+                <div class="rating_item4" data-item-value="4">★</div>
+                <div class="rating_item4" data-item-value="3">★</div>
+                <div class="rating_item4" data-item-value="2">★</div>
+                <div class="rating_item4" data-item-value="1">★</div>
+            </div>
+        </div>
+        <div class="wrapper remark">Примечания:</div>
+        <textarea class="wrapper remark" id="remark" rows="2" th:field="${review.remark}"></textarea>
+    </form>
+</div>
+</body>
+</html>

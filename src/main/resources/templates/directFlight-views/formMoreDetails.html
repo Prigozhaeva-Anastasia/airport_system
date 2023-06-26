@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="template">
+<head>
+  <title>Прямые рейсы</title>
+  <link th:href="@{/css/flight.css}" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+<div layout:fragment="content1">
+  <div id="font">
+  <div id="mapImage">
+    <div>
+      <span id="flightNumberLabel">Номер рейса</span>
+      <span id="airlineLabel">Авиакомпания</span>
+    </div>
+    <div>
+      <span id="flightNumber" th:text="${directFlight.getFlightNumber()}"></span>
+      <img id="airlineDirect" width="150" th:src="${directFlight.getAirline().getPathToImg()}">
+    </div>
+  </div>
+  <div id="background">
+    <div id="inf">
+      <div id="leftTop">
+        <span id="arrival">Вылет</span>
+        <span id="arrivalDate" th:text="${#temporals.format(directFlight.getArrivalDate(), 'dd.MM.yyyy')}"></span>
+      </div>
+      <span id="arrivalAirportLabel">Аэропорт</span>
+      <div id="leftBottom">
+        <span id="arrivalTime" th:text="${#temporals.format(directFlight.getArrivalTime(), 'HH:mm')}"></span>
+        <span id="arrivalAirport" th:text="${directFlight.getArrivalAirport()}"></span>
+      </div>
+      <div id="arrivalCityLabel">Город</div>
+      <div id="arrivalCity" th:text="${directFlight.getArrivalCity()}"></div>
+      <div id="line"></div>
+      <div id="rightTop">
+        <span id="departure">Посадка</span>
+        <span id="departureDate" th:text="${#temporals.format(directFlight.getDepartureDate(), 'dd.MM.yyyy')}"></span>
+      </div>
+      <span id="departureAirportLabel">Аэропорт</span>
+      <div id="rightBottom">
+        <span id="departureTime" th:text="${#temporals.format(directFlight.getDepartureTime(), 'HH:mm')}"></span>
+        <span id="departureAirport" th:text="${directFlight.getDepartureAirport()}"></span>
+      </div>
+      <div id="departureCityLabel">Город</div>
+      <div id="departureCity" th:text="${directFlight.getDepartureCity()}"></div>
+    </div>
+  </div>
+  </div>
+</div>
+</body>
+</html>

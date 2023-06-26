@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+                xmlns:sec="http://www.thymeleaf.org/extras/spring-security"layout:decorate="template">
+<head>
+    <title>Главная</title>
+    <link th:href="@{/css/main.css}" rel="stylesheet">
+    <script type="text/javascript" src="../js/mainForUser.js" th:src="@{/js/mainForUser.js}" charset="utf-8"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="/webjars/bootstrap/5.1.3/js/bootstrap.bundle.js"></script>
+</head>
+<body>
+<div id="background" layout:fragment="content1">
+    <form c>
+        <div id="top">
+            <div id="airlines">
+                <button type="submit" class="font" th:formaction="@{/airlines/index}">Авиакомпании</button>
+            </div>
+            <div id="flights">
+                <button type="button" class="font" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Рейсы</button>
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content bg-dark">
+                            <div class="modal-header">
+                                <h6 class="modal-title" id="exampleModalLongTitle">Для того, чтобы продолжить, выберите вид реса:</h6>
+                                <button id="close" type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="divForModal"><a class="choices" th:href="@{/directFlights/index}">Прямой рейс</a></div>
+                                <div class="divForModal"><a class="choices" th:href="@{/transitFlights/index}">Транзитный рейс</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="bottom">
+            <div id="passengers">
+                <button type="submit" class="font" th:formaction="@{/passengers/index}">Пассажиры</button>
+            </div>
+            <div id="reports">
+                <button type="button" class="font" data-bs-toggle="modal" data-bs-target="#exampleModalCenterForOrders">Отчёты</button>
+                <div class="modal fade" id="exampleModalCenterForOrders" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content bg-dark">
+                            <div class="modal-header">
+                                <h6 class="modal-title" id="exampleModalLongTitleForOrders">Для того, чтобы продолжить, выберите вид отчёта:</h6>
+                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="divForModal"><a class="choices" th:href="@{/charts/passengerTrafficDynamics}">Динамика пассажиропотока</a></div>
+                                <div class="divForModal"><a class="choices" th:href="@{/charts/airlineRatingChart}">График рейтинга авиакомпаний</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div id="font" sec:authorize="hasAuthority('Passenger')">
+        <div id="darkFont">
+            <div id="mainDiv">
+                <form id="formMainForUser" method="post" th:action="@{/mainForUser/foundDirectFlights}">
+                    <div id="direction-wrapper">
+                        <label class="arrivalCityLabel" for="arrivalCity">Откуда</label>
+                        <label class="departureCityLabel arrival" for="departureCity">Куда</label>
+                    </div>
+                    <div class="d-flex justify-content-around">
+                        <div>
+                            <input id="arrivalCity" class="direction" type="text" name="arrivalCity" th:field="${flight.arrivalCity}" pattern="^[A-Za-zА-Яа-я -]+$" required>
+                            <label id="arrivalCityError" class="errorLabel">(буквы русского и латинского алфавита)</label>
+                        </div>
+                        <div>
+                            <input id="departureCity" class="direction" type="text" name="departureCity" th:field="${flight.departureCity}" pattern="^[A-Za-zА-Яа-я -]+$" required>
+                            <label id="departureCityError" class="errorLabel">(буквы русского и латинского алфавита)</label>
+                        </div>
+                    </div>
+                    <div>
+                        <div><label id="arrivalDateLabel">Дата</label></div>
+                        <div>
+                            <input id="arrivalDate" type="date" class="direction" name="arrivalDate" th:field="${flight.arrivalDate}" required>
+                            <label id="arrivalDateError" class="errorLabel">поле не должно быть пустым</label>
+                        </div>
+                    </div>
+                    <div id="divTransfer">
+                        <input class="form-check-input" type="checkbox" value="true" id="hasTransfers" name="hasTransfers">
+                        <label class="form-check-label" for="hasTransfers">Наличие пересадок</label>
+                    </div>
+                    <div>
+                        <button id="search" class="btn" type="submit">Найти</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

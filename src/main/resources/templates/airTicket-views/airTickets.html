@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="template">
+<head>
+  <title>Авиабилеты</title>
+  <link th:href="@{/css/styles.css}" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body class="mainFont">
+<div layout:fragment="content1">
+  <div class="container mt-3">
+    <div class="card">
+      <div class="card-header head">Список билетов пассажира</div>
+      <div class="card-body">
+        <table class="table">
+          <thead>
+          <tr class="text-center">
+            <th>Номер рейса</th>
+            <th colspan="2">Направление</th>
+            <th>Дата</th>
+            <th>Время</th>
+            <th>Тип билета</th>
+            <th>Цена, BYN</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr class="text-center" th:each="airTicketD:${listAirTicketsForDirectFlight}">
+            <td th:text="${airTicketD.getDirectFlight().getFlightNumber()}"></td>
+            <td th:text="${airTicketD.getDirectFlight().getArrivalCity()}" ></td>
+            <td th:text="${airTicketD.getDirectFlight().getDepartureCity()}"></td>
+            <td th:text="${#temporals.format(airTicketD.getDirectFlight().getArrivalDate(), 'dd.MM.yyyy')}"></td>
+            <td th:text="${#temporals.format(airTicketD.getDirectFlight().getArrivalTime(), 'HH:mm')}"></td>
+            <td th:text="${airTicketD.getTypeOfTicket()}"></td>
+            <td th:text="${airTicketD.getPrice()}"></td>
+          </tr>
+          <tr class="text-center" th:each="airTicketT:${listAirTicketsForTransitFlight}">
+            <td th:text="${airTicketT.getTransitFlight().getFlightNumber()}"></td>
+            <td th:text="${airTicketT.getTransitFlight().getArrivalCity()}" ></td>
+            <td th:text="${airTicketT.getTransitFlight().getDepartureCity()}"></td>
+            <td th:text="${#temporals.format(airTicketT.getTransitFlight().getArrivalDate(), 'dd.MM.yyyy')}"></td>
+            <td th:text="${#temporals.format(airTicketT.getTransitFlight().getArrivalTime(), 'HH:mm')}"></td>
+            <td th:text="${airTicketT.getTypeOfTicket()}"></td>
+            <td th:text="${airTicketT.getPrice()}"></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

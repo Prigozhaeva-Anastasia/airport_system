@@ -1,0 +1,91 @@
+#background {
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    min-height: 657px;
+    font-size: 18px;
+    color: white;
+    font-family: Georgia;
+}
+.rating {
+    display: inline-flex;
+    flex-direction: row-reverse;
+}
+.rating_item1, .rating_item2, .rating_item3, .rating_item4 {
+    color: #dcdcdc;
+    font-size: 50px;
+    cursor: pointer;
+    transition: .2s;
+}
+.rating_item1:hover, .rating_item2:hover, .rating_item3:hover, .rating_item4:hover,
+.rating_item1:hover ~ .rating_item1, .rating_item2:hover ~ .rating_item2, .rating_item3:hover ~ .rating_item3, .rating_item4:hover ~ .rating_item4 {
+    color: #989898;
+}
+.rating[data-total-value="1"] .rating_item1:nth-child(n+5),
+.rating[data-total-value="2"] .rating_item1:nth-child(n+4),
+.rating[data-total-value="3"] .rating_item1:nth-child(n+3),
+.rating[data-total-value="4"] .rating_item1:nth-child(n+2),
+.rating[data-total-value="5"] .rating_item1:nth-child(n+1) {
+    color: #FCF23E;
+}
+.rating[data-total-value="1"] .rating_item2:nth-child(n+5),
+.rating[data-total-value="2"] .rating_item2:nth-child(n+4),
+.rating[data-total-value="3"] .rating_item2:nth-child(n+3),
+.rating[data-total-value="4"] .rating_item2:nth-child(n+2),
+.rating[data-total-value="5"] .rating_item2:nth-child(n+1) {
+    color: #FCF23E;
+}
+.rating[data-total-value="1"] .rating_item3:nth-child(n+5),
+.rating[data-total-value="2"] .rating_item3:nth-child(n+4),
+.rating[data-total-value="3"] .rating_item3:nth-child(n+3),
+.rating[data-total-value="4"] .rating_item3:nth-child(n+2),
+.rating[data-total-value="5"] .rating_item3:nth-child(n+1) {
+    color: #FCF23E;
+}.rating[data-total-value="1"] .rating_item4:nth-child(n+5),
+ .rating[data-total-value="2"] .rating_item4:nth-child(n+4),
+ .rating[data-total-value="3"] .rating_item4:nth-child(n+3),
+ .rating[data-total-value="4"] .rating_item4:nth-child(n+2),
+ .rating[data-total-value="5"] .rating_item4:nth-child(n+1) {
+     color: #FCF23E;
+ }
+
+#remark {
+    background: transparent;
+    border: none;
+    width: 500px;
+    border-bottom: 1px solid #8f34e4;
+    color: white;
+    font-size: 18px;
+    font-family: Georgia;
+}
+#remark:focus {
+    outline: none;
+    border-bottom: 1px solid white;
+}
+#saveBtn {
+    margin-left: 1400px;
+    color: green;
+    background-color: transparent;
+    border: none;
+    font-size: 40px;
+    border-radius: 10px;
+}
+#saveBtn:hover {
+    background-color: rgba(166, 165, 165);
+}
+#mainLabel {
+    margin-top: -40px;
+    font-size: 28px;
+    text-align: center;
+}
+#airlineName {
+    font-size: 28px;
+    text-align: center;
+    color: #8f34e4;
+    padding-bottom: 30px;
+}
+.wrapper {
+    margin-left: 285px;
+}
+.remark {
+    margin-left: 290px;
+}

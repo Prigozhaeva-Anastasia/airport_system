@@ -1,0 +1,86 @@
+body {
+    background-image: url("../images/img/fontInfo.png");
+    background-size: 1560px 900px;
+}
+#mainDiv {
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 915px;
+    min-height: 607px;
+    margin-top: 27px;
+    margin-left: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    padding-bottom: 20px;
+}
+table {
+    font-family: Georgia;
+    font-size: 22px;
+    color: white;
+    width: 500px;
+}
+tr {
+    height: 50px;
+}
+.centuryFont {
+    font-family: "Century751 SeBd BT";
+}
+input {
+    background: transparent;
+    border: none;
+    width: 300px;
+    border-bottom: 1px solid #7C44AA;
+    color: #615E5E;
+    font-size: 22px;
+    font-family: Georgia;
+}
+input:focus {
+    outline: none;
+    border-bottom: 1px solid white;
+}
+.form-check-input:checked {
+    background-color: #8f34e4;
+    border-color: #8f34e4;
+    box-shadow: #8f34e4;
+}
+.form-check-label {
+    color: #615E5E;
+}
+#editBtn{
+    margin-left: 200px;
+    margin-top: 10px;
+    background-color: #A358E0;
+    color: white;
+    font-family: Georgia;
+    border-radius: 20px;
+    width: 170px;
+    height: 40px;
+    font-size: 18px;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0);
+}
+#editBtn:hover{
+    background-color: #7C44AA;
+}
+#changePassword {
+    background-color: transparent;
+    border: none;
+    color: #A358E0;
+}
+#changePassword:hover{
+    color: #7C44AA;
+    background-color: rgba(166, 165, 165, 0.6);
+}
+#hiddenTR1, #hiddenTR2 {
+    visibility: hidden;
+}
+@charset "UTF-8";
+.errorLabel {
+    color: rgba(255, 96, 96, 0.7);
+    font-size: 14px;
+    display: none;
+}
+.error {
+    border-bottom: 1px solid rgba(255, 63, 63, 0.7);
+}

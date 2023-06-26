@@ -1,0 +1,57 @@
+thead {
+    border-radius: 20px 20px 2px 2px;
+}
+.mainFont {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.departure:before {
+    content: '';
+    background-image: url("../images/img/arrive.png");
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 4px;
+    top: 0px;
+}
+.departure{
+    text-decoration: none;
+    width: 60px;
+    height: 46px;
+    position: relative;
+    left: -5px;
+}
+.departure:hover {
+    background-color: rgba(166, 165, 165, 0.6);
+}
+.arrival:before {
+    content: '';
+    background-image: url("../images/img/departure.png");
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 4px;
+    top: 0px;
+}
+.arrival{
+    text-decoration: none;
+    width: 60px;
+    height: 46px;
+    position: relative;
+    left: -5px;
+}
+.arrival:hover {
+    background-color: rgba(166, 165, 165, 0.6);
+}
+#divForBtns {
+    margin-top: 10px;
+    margin-bottom: 13px;
+    margin-left: 5px;
+}
+#label {
+    color: white;
+    font-size: 33px;
+    font-family: "Century751 SeBd BT";
+    text-align: center;
+}

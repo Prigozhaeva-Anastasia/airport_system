@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="template">
+<head>
+    <title>Прямые рейсы</title>
+    <link th:href="@{/css/flight.css}" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script type="text/javascript" src="../js/flight.js" th:src="@{/js/flight.js}"></script>
+    <script type="text/javascript" src="../js/formForMoreDetails.js" th:src="@{/js/formForMoreDetails.js}"></script>
+</head>
+<body>
+<div layout:fragment="content1">
+    <div id="font">
+        <div id="mapImage">
+            <div>
+                <span id="flightNumberLabel">Номер рейса</span>
+                <span id="airlineLabel">Авиакомпания</span>
+            </div>
+            <div>
+                <span id="flightNumber" th:text="${transitFlight.getFlightNumber()}"></span>
+                <img id="airlineTransit" width="150" th:src="${transitFlight.getAirline().getPathToImg()}">
+            </div>
+        </div>
+        <div id="background">
+            <div id="inf">
+                <div id="leftTop">
+                    <span id="arrival">Вылет</span>
+                    <span id="arrivalDate" th:text="${#temporals.format(transitFlight.getArrivalDate(), 'dd.MM.yyyy')}"></span>
+                </div>
+                <span id="arrivalAirportLabel">Аэропорт</span>
+                <div id="leftBottom">
+                    <span id="arrivalTime" th:text="${#temporals.format(transitFlight.getArrivalTime(), 'HH:mm')}"></span>
+                    <span id="arrivalAirport" th:text="${transitFlight.getArrivalAirport()}"></span>
+                </div>
+                <div id="arrivalCityLabel">Город</div>
+                <div id="arrivalCity" th:text="${transitFlight.getArrivalCity()}"></div>
+                <div id="lineTransit"></div>
+                <div id="rightTop">
+                    <span id="departure">Посадка</span>
+                    <span id="departureDate" th:text="${#temporals.format(transitFlight.getDepartureDate(), 'dd.MM.yyyy')}"></span>
+                </div>
+                <span id="departureAirportLabel">Аэропорт</span>
+                <div id="rightBottom">
+                    <span id="departureTime" th:text="${#temporals.format(transitFlight.getDepartureTime(), 'HH:mm')}"></span>
+                    <span id="departureAirport" th:text="${transitFlight.getDepartureAirport()}"></span>
+                </div>
+                <div id="departureCityLabel">Город</div>
+                <div id="departureCity" th:text="${transitFlight.getDepartureCity()}"></div>
+                <div id="transfersLabel">Пересадки</div>
+                <div id="divForTransfers">
+                    <span id="transfers" th:each="transfer: ${listTransfers}">
+                        <span th:text="${transfer.getNameOfCity()}"></span>
+                        <span> - </span>
+                    </span>
+                </div>
+                <a class="info" onclick="localStorage.clear()" th:href="@{/transfers/index(transitFlightId=${transitFlight.getId()})}"></a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

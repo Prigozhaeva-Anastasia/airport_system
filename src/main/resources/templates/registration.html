@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Регистрация</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        #mainFont {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/images/img/font.jpg");
+            background-size: cover;
+            width: 1400px;
+            min-height: 607px;
+        }
+        #mainDiv {
+            border-radius: 20px;
+            background-color: rgba(58, 58, 58, 0.7);
+            width: 510px;
+            min-height: 785px;
+            margin-top: 30px;
+            margin-left: 890px;
+        }
+        #registrationLabel {
+            position: relative;
+            top: 20px;
+            margin-left: 152px;
+            font-family: Georgia;
+            color: white;
+            font-size: 32px;
+        }
+        input {
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid #8f34e4;
+            color: white;
+            font-size: 18px;
+            font-family: "Century751 SeBd BT";
+            width: 280px;
+            height: 43px;
+            margin-left: -80px;
+            margin-bottom: 15px;
+        }
+        input:focus {
+            outline: none;
+            border-bottom: 1px solid white;
+        }
+        #wrapper {
+            position: relative;
+            top: 34px;
+            left: 80px;
+        }
+        #signUp {
+            background-color: #A358E0;
+            color: white;
+            font-family: Georgia;
+            border-radius: 20px;
+            width: 180px;
+            height: 42px;
+            margin-top: 35px;
+            margin-left: -110px;
+            font-size: 18px;
+            box-shadow: 0px 0px 8px rgba(0, 0, 0);
+            margin-bottom: 50px;
+        }
+        #signUp:hover {
+            background-color: #7C44AA;
+        }
+        .form-check-input {
+            margin-top: 10px;
+            height: 18px;
+            margin-left: -210px;
+            margin-bottom: 30px;
+        }
+        .form-check-label {
+            margin-top: 10px;
+            color: white;
+            font-size: 18px;
+            font-family: Georgia;
+            margin-left: -120px;
+            margin-bottom: 30px;
+        }
+        #female {
+            margin-left: -100px;
+        }
+        .divForLabel {
+            color: white;
+            font-size: 21px;
+            font-family: Georgia;
+            margin-bottom: 35px;
+            margin-left: 15px;
+        }
+        #divOfLabels {
+            position: relative;
+            top: -10px;
+        }
+        .text-danger {
+            margin-left: -80px;
+            color: rgb(255, 0, 0, 0.7);
+            font-size: 14px;
+            width: 310px;
+        }
+        .text-danger1 {
+            margin-top: 15px;
+            margin-left: -80px;
+            color: rgb(255, 0, 0, 0.7);
+            font-size: 14px;
+            height: 5px;
+            width: 100%;
+        }
+        .errorDiv{
+            margin-left: -80px;
+            color: rgb(255, 0, 0, 0.7);
+            font-size: 14px;
+        }
+        #dateError, #passwordError {
+            display: none;
+        }
+    </style>
+</head>
+<body id="mainFont">
+<div>
+    <div id="mainDiv">
+        <form method="post" th:action="@{/registration}">
+            <label id="registrationLabel">Регистрация</label>
+            <table>
+                <tr>
+                    <td id="divOfLabels">
+                        <div class="divForLabel">
+                            <span>Фамилия</span>
+                            <div class="text-danger1" th:if="${#fields.hasErrors('passenger.user.lastName')}"></div>
+                        </div>
+                        <div class="divForLabel">
+                            <span>Имя</span>
+                            <div class="text-danger1" th:if="${#fields.hasErrors('passenger.user.firstName')}"></div>
+                        </div>
+                        <div class="divForLabel"><span>Пол</span></div>
+                        <div class="divForLabel"><span>Дата рождения</span></div>
+                        <div class="divForLabel">
+                            <span>Гражданство</span>
+                            <div class="text-danger1" th:if="${#fields.hasErrors('passenger.citizenship')}"></div>
+                        </div>
+                        <div class="divForLabel">
+                            <span>Номер паспорта</span>
+                            <div class="text-danger1" th:if="${#fields.hasErrors('passenger.passportNumber')}"></div>
+                        </div>
+                        <div class="divForLabel">
+                            <span>Номер телефона</span>
+                            <div class="text-danger1" th:if="${#fields.hasErrors('passenger.phoneNumber')}"></div>
+                        </div>
+                        <div class="divForLabel">
+                            <span>Логин</span>
+                            <div class="text-danger1" th:if="${#fields.hasErrors('passenger.user.email')}"></div>
+                        </div>
+                        <div class="divForLabel">
+                            <span>Пароль</span>
+                            <div class="text-danger1" th:if="${#fields.hasErrors('passenger.user.password')}"></div>
+                        </div>
+                        <div class="divForLabel">
+                            <span>Подтверждение пароля</span>
+                        </div>
+                    </td>
+                    <td id="wrapper">
+                        <div><input type="text" name="lastName" th:errorClass="error" th:field="${passenger.user.lastName}"></div>
+                        <div class="text-danger" th:if="${#fields.hasErrors('passenger.user.lastName')}" th:errors="${passenger.user.lastName}">Error</div>
+                        <div><input type="text" name="firstName" th:errorClass="error" th:field="${passenger.user.firstName}"></div>
+                        <div class="text-danger" th:if="${#fields.hasErrors('passenger.user.firstName')}" th:errors="${passenger.user.firstName}">Error</div>
+                        <div style="display: flex; width: 300px;">
+                            <input class="form-check-input" type="radio" name="gender" id="male" value="мужской" checked>
+                            <label class="form-check-label" th:checked="${passenger.getGender()}" for="male">Мужской</label>
+                            <input class="form-check-input" type="radio" name="gender" id="female" value="женский">
+                            <label class="form-check-label" id="forFemale" th:checked="${passenger.getGender()}" for="female">Женский</label>
+                        </div>
+                        <input id="textDate" type="text" name="date"  class="centuryFont" th:field="${passenger.dateOfBirth}" hidden="hidden">
+                        <div><input id="date" type="date" name="date" class="centuryFont" required></div>
+                        <div id="dateError" class="errorDiv">Поле не должно быть пустым</div>
+                        <div><input id="citizenship" type="text" name="citizenship" th:errorClass="error" th:field="${passenger.citizenship}"></div>
+                        <div class="text-danger" th:if="${#fields.hasErrors('passenger.citizenship')}" th:errors="${passenger.citizenship}">Error</div>
+                        <div><input id="passportNumber" type="text" class="centuryFont" name="passportNumber" th:errorClass="error" th:field="${passenger.passportNumber}"></div>
+                        <div class="text-danger" th:if="${#fields.hasErrors('passenger.passportNumber')}" th:errors="${passenger.passportNumber}">Error</div>
+                        <div><input id="phoneNumber" type="text" class="centuryFont" name="phoneNumber" th:errorClass="error" th:field="${passenger.phoneNumber}"></div>
+                        <div class="text-danger" th:if="${#fields.hasErrors('passenger.phoneNumber')}" th:errors="${passenger.phoneNumber}">Error</div>
+                        <div><input id="email" type="text" class="centuryFont" name="email" th:errorClass="error" th:field="${passenger.user.email}"></div>
+                        <div class="text-danger" th:if="${#fields.hasErrors('passenger.user.email')}" th:errors="${passenger.user.email}">Error</div>
+                        <div><input id="pass" type="password" name="password" th:errorClass="error" th:field="${passenger.user.password}"></div>
+                        <div class="text-danger" th:if="${#fields.hasErrors('passenger.user.password')}" th:errors="${passenger.user.password}">Error</div>
+                        <div><input id="passwordConfirmation" type="password" name="pass"></div>
+                        <div id="passwordError" class="errorDiv">Поле 'Подтверждение пароля' не совпадает с полем 'Пароль'</div>
+                        <button id="signUp" type="submit">Зарегистрироваться</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+<script>
+    let textDate = document.getElementById('textDate');
+    let date = document.getElementById('date');
+    let dateError = document.getElementById('dateError');
+    let passwordError = document.getElementById('passwordError');
+    let pass = document.getElementById('pass');
+    let passwordConfirmation = document.getElementById('passwordConfirmation');
+
+    date.addEventListener('invalid', function (event) {
+        dateError.style.display = 'block';
+    });
+
+    date.addEventListener('change', function (event) {
+        textDate.value = new Date(date.value).toLocaleDateString();
+    });
+
+    passwordConfirmation.addEventListener('mouseout', function (event) {
+        if (pass.value !== passwordConfirmation.value) {
+            passwordError.style.display = 'block';
+        }
+    });
+</script>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="template">
+<head>
+  <title>Транзитные рейсы</title>
+  <link th:href="@{/css/styles.css}" rel="stylesheet">
+  <script type="text/javascript" src="../js/transitFlights.js" th:src="@{/js/transitFlights.js}"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body class="mainFont">
+<div layout:fragment="content1">
+  <div class="container mt-3">
+    <div class="card">
+      <div class="card-header head">Список транзитных рейсов</div>
+      <div class="card-body">
+        <div class="search">
+          <form id="formSearch" method="get" th:action="@{index}">
+            <input id="searchField" type="text" class="col-11" name="keyword" placeholder="   Введите напрвление" th:value="${keyword}">
+            <button type="submit"/>
+          </form>
+        </div>
+        <div id="inline">
+          <form id="formBtns">
+            <a id="createBtn" onclick="localStorage.clear()" class="btn" th:href="@{/transitFlights/formCreate}"></a>
+            <a id="reload" class="btn" th:href="@{/transitFlights/index}"></a>
+            <button type="button" id="filterForDirectFlight" data-bs-toggle="dropdown"></button>
+            <ul class="dropdown-menu">
+              <li><button id="byDate" type="button" class="dropdown-item">по дате</button>
+              </li>
+              <li><button id="byTime" type="button" class="dropdown-item">по времени</button>
+              </li>
+            </ul>
+          </form>
+          <form id="formFilter" method="post" th:action="@{/transitFlights/filterByDate}">
+            <label id="ratingLabel">Дата:</label>
+            <div class="inputs">
+              <input id="date1" class="form-control" type="date" name="date1" placeholder="от">
+              <input id="date2" class="form-control" type="date" name="date2" placeholder="до">
+            </div>
+            <div><button id="applyBtn" type="submit">Применить</button></div>
+          </form>
+          <form id="formFilter2" method="post" th:action="@{/transitFlights/filterByTime}">
+            <label id="ratingLabel2">Время:</label>
+            <div class="inputs">
+              <input id="time1" class="form-control" type="time" name="time1" placeholder="от">
+              <input id="time2" class="form-control" type="time" name="time2" placeholder="до">
+            </div>
+            <div><button id="applyBtn2" type="submit">Применить</button></div>
+          </form>
+        </div>
+        <table class="table">
+          <thead>
+          <tr class="text-center">
+            <th>Авиакомпания</th>
+            <th>Номер рейса</th>
+            <th colspan="2">Направление</th>
+            <th><a id="sortedFieldByData" class="nav-link dropdown-toggle menu" th:href="@{/transitFlights/sortByData}">Дата</a></th>
+            <th>Время</th>
+            <th>Действия</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr class="text-center" th:each="transitFlight:${listTransitFlights}">
+            <td>
+              <img width="160" th:src="${transitFlight.getAirline().getPathToImg()}" alt="Изображение">
+            </td>
+            <td th:text="${transitFlight.getFlightNumber()}"></td>
+            <td th:text="${transitFlight.getArrivalCity()}"></td>
+            <td th:text="${transitFlight.getDepartureCity()}"></td>
+            <td th:text="${#temporals.format(transitFlight.getArrivalDate(), 'dd.MM.yyyy')}"></td>
+            <td th:text="${#temporals.format(transitFlight.getArrivalTime(), 'HH:mm')}"></td>
+            <td>
+              <a class="btn btn-danger" onclick="return confirm('Вы действительно хотите удалить транзитный рейс?')"
+                 th:href="@{/transitFlights/delete(transitFlightId=${transitFlight.getId()}, keyword=${keyword})}"></a>
+              <a class="btn btn-primary output" onclick="localStorage.clear()" th:href="@{/transitFlights/formUpdate(transitFlightId=${transitFlight.getId()})}"></a>
+              <a class="btn btn-outline-dark" th:href="@{/transitFlights/formMoreDetails(transitFlightId=${transitFlight.getId()})}">Подробнее</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

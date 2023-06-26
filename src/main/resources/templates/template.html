@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/templates.css}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/5.1.3/css/bootstrap.min.css">
+    <script src="/webjars/bootstrap/5.1.3/js/bootstrap.bundle.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/}">Главная</a>
+        <a sec:authorize="hasAuthority('Passenger')" class="btn scoreboard" th:href="@{/mainForUser/scoreboard}"></a>
+        <a sec:authorize="hasAuthority('Passenger')" id="rules" class="nav-link" th:href="@{/mainForUser/rulesForPassengers}">Правила безопасности</a>
+        <a sec:authorize="hasAuthority('Admin')" class="btn user" th:href="@{/admin/personalData}"></a>-->
+        <a sec:authorize="hasAuthority('Passenger')" class="btn user" th:href="@{/mainForUser/personalData}"></a>
+        <a class="btn logout" data-bs-toggle="modal" data-bs-target="#exampleModalCenterForLogout"></a>
+        <div class="modal fade" id="exampleModalCenterForLogout" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content bg-dark">
+                    <div>
+                        <button type="button" class="close later" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h6 class="modal-title" id="exampleModalLongTitleForLogout">Вы уверены, что хотите выйти из аккаунта?</h6>
+                        <form id="formForModal" method="get" th:action="@{/login}">
+                            <button id="out" type="submit" class="btn btn-primary out">Да</button>
+                            <button type="button" class="btn btn-secondary out" data-bs-dismiss="modal">Нет</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<section layout:fragment="content1">
+</section>
+</body>
+</html>

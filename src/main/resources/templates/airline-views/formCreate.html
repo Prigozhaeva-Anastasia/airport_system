@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="template">
+<head>
+  <meta charset="UTF-8">
+  <title>Добавление авиакомпании</title>
+  <link th:href="@{/css/styles.css}" rel="stylesheet">
+  <script type="text/javascript" src="../js/formCreateForAirline.js" th:src="@{/js/formCreateForAirline.js}" charset="utf-8"></script>
+</head>
+<body class="mainFont">
+<div layout:fragment="content1">
+  <div class="col-md-6 offset-3 mt-3">
+    <form id="form" class="form-control" method="post" th:action="@{save}" >
+      <div class="mb-3 mt-3">
+        <label for="airlineName" class="form-label">Название авиакомпании:</label>
+        <input id="airlineName" type="text" name="airlineName" class="form-control" th:errorClass="error" th:field="${airline.airlineName}">
+        <div class="text-danger" th:if="${#fields.hasErrors('airline.airlineName')}" th:errors="${airline.airlineName}">Error</div>
+      </div>
+      <div id="ratingDiv" class="mb-3 mt-3">
+        <label for="rating" class="form-label">Рейтинг:</label>
+        <input id="rating" type="text" name="rating" class="form-control" th:field="${airline.rating}" pattern="^([0-4](\.\d)?)|5$" required>
+        <label id="errorLabel" class="errorLabel">Поле 'Рейтинг' должно содержать целочисленные значения и дробные в формате __._ в диапазоне от 0 до 5</label>
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="log" class="form-label">Изображение:</label>
+        <input id="log" type="file" name="pathToImg" class="form-control">
+        <input id="hiddenLog" type="hidden" th:field="${airline.pathToImg}">
+      </div>
+      <div class="mb-3 mt-3">
+        <div><img id="logotype" width="200"  accept="image/*" th:src="${airline.getPathToImg()}" alt="Изображение"></div>
+      </div>
+      <button id="create" type="submit" class="btn btn-primary">Добавить</button>
+    </form>
+  </div>
+</div>
+</body>
+</html>

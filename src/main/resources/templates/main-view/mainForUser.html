@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="template">
+<head>
+    <title>Главная</title>
+    <link th:href="@{/css/mainWindowForUsers.css}" rel="stylesheet">
+    <script type="text/javascript" src="../js/mainForUser.js" th:src="@{/js/mainForUser.js}" charset="utf-8"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+<div layout:fragment="content1">
+    <div id="font">
+        <div id="darkFont">
+            <div id="mainDiv">
+                <form id="formMainForUser" method="post" th:action="@{/mainForUser/foundDirectFlights}">
+                    <div id="direction-wrapper">
+                        <label class="arrivalCityLabel" for="arrivalCity">Откуда</label>
+                        <label class="departureCityLabel arrival" for="departureCity">Куда</label>
+                    </div>
+                    <div class="d-flex justify-content-around">
+                        <div>
+                            <input id="arrivalCity" class="direction" type="text" name="arrivalCity" th:field="${flight.arrivalCity}" pattern="^[A-Za-zА-Яа-я -]+$" required>
+                            <label id="arrivalCityError" class="errorLabel">(буквы русского и латинского алфавита)</label>
+                        </div>
+                        <div>
+                            <input id="departureCity" class="direction" type="text" name="departureCity" th:field="${flight.departureCity}" pattern="^[A-Za-zА-Яа-я -]+$" required>
+                            <label id="departureCityError" class="errorLabel">(буквы русского и латинского алфавита)</label>
+                        </div>
+                    </div>
+                    <div>
+                        <div><label id="arrivalDateLabel">Дата</label></div>
+                        <div>
+                            <input id="arrivalDate" type="date" class="direction" name="arrivalDate" th:field="${flight.arrivalDate}" required>
+                            <label id="arrivalDateError" class="errorLabel">поле не должно быть пустым</label>
+                        </div>
+                    </div>
+                    <div id="divTransfer">
+                        <input class="form-check-input" type="checkbox" value="true" id="hasTransfers" name="hasTransfers">
+                        <label class="form-check-label" for="hasTransfers">Наличие пересадок</label>
+                    </div>
+                    <div>
+                        <button id="search" class="btn" type="submit">Найти</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

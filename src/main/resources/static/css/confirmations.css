@@ -1,0 +1,187 @@
+#background {
+    padding-top: 40px;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    min-height: 657px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 18px;
+    color: white;
+    font-family: Georgia;
+}
+#backgroundImg {
+    background-image: url("../images/img/backgroundImg.jpg");
+    background-size: cover;
+    width: 100%;
+    min-height: 657px;
+}
+#mainDiv {
+    width: 822px;
+    height: 551px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+}
+.left {
+    position: absolute;
+    left: 430px;
+}
+.right {
+    position: absolute;
+    left: 895px;
+}
+.purpleColor {
+    color: #c76bfc;
+    font-family: Georgia;
+    font-size: 16px;
+}
+.spaceBetween {
+    margin-top: 70px;
+}
+.centuryFont {
+    font-family: "Century751 SeBd BT";
+}
+.time {
+    font-size: 30px;
+    margin-top: 140px;
+}
+.date {
+    font-size: 16px;
+    margin-top: 157px;;
+}
+.timeOnWay {
+    color: white;
+    font-size: 16px;
+    font-family: "Century751 SeBd BT";
+}
+.lineDiv {
+    position: absolute;
+    top: 252px;
+    left: 690px;
+}
+.line {
+    width: 134px;
+    height: 1px;
+    background-color: white;
+}
+table {
+    position: absolute;
+    top: 320px;
+    left: 430px;
+}
+.td1{
+    width: 180px;
+}
+.td2 {
+    width: 285px;
+    text-align: center;
+}
+.horizontalLine1 {
+    margin-top: 325px;
+    width: 821px;
+    height: 1px;
+    background-color: white;
+}
+#td {
+    width: 650px;
+    text-align: center;
+}
+tr {
+    height: 35px;
+}
+.top {
+    margin-left: 80px;
+    position: relative;
+    top: 20px;
+}
+#table {
+    position: absolute;
+    top: 575px;
+    left: 358px;
+    width: 820px;
+}
+.td {
+    width: 273px;
+    text-align: center;
+}
+.horizontalLine2 {
+    position: absolute;
+    top: 575px;
+    width: 821px;
+    height: 1px;
+    background-color: white;
+}
+.horizontalLine3 {
+    position: absolute;
+    top: 610px;
+    width: 821px;
+    height: 1px;
+    background-color: white;
+}
+#verticalLine1 {
+    position: absolute;
+    top: 575px;
+    left: 631px;
+    border-left: 1px solid white;
+    height: 75px;
+}
+#verticalLine2 {
+    position: absolute;
+    top: 575px;
+    left: 904px;
+    border-left: 1px solid white;
+    height: 75px;
+}
+.buyBtn {
+    font-size: 15px;
+    color: white;
+    background-color: #7C44AA;
+    border-radius: 20px;
+    width: 110px;
+    height: 35px;
+    position: relative;
+    top: 140px;
+    left: 360px;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0);
+}
+.buyBtn:hover{
+    background-color: rgba(143, 52, 228, 0.4);
+}
+#savePdfBtn {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 34px;
+    position: absolute;
+    top: 110px;
+    left: 1110px;
+}
+#savePdfBtn:hover {
+    background-color: rgba(166, 165, 165, 0.6);
+    border-radius: 5px;
+}
+.leaveReviewBtn{
+    position: absolute;
+    top: 670px;
+    left: 365px;
+    background-color: #A358E0;
+    color: white;
+    font-family: Georgia;
+    border: none;
+    border-radius: 20px;
+    width: 170px;
+    height: 35px;
+    font-size: 18px;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0);
+}
+.leaveReviewBtn:hover{
+    background-color: #7C44AA;
+}
+#errorLabel {
+    margin-left: 500px;
+    position: relative;
+    top: 100px;
+    color: rgba(249, 81, 81, 0.8);
+    font-size: 100px;
+    transform: rotate(-30deg);
+}

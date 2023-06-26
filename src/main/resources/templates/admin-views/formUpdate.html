@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="template">
+<head>
+  <title>Редактирование данных админа</title>
+  <link th:href="@{/css/adminDetail.css}" rel="stylesheet">
+  <script type="text/javascript" src="../js/admin.js" th:src="@{/js/admin.js}" charset="utf-8"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+<div layout:fragment="content1">
+  <div id="main">
+    <form id="formUpdateAdmin" method="post" th:action="@{/admin/update}" th:object="${admin}">
+      <input type="text" name="id" th:value="${admin.getId()}" hidden>
+      <div class="wrapper">
+        <label class="divForLabel" for="lastName">Фамилия:</label>
+        <input id="lastName" class="input" type="text" name="lastName" th:value="${admin.lastName}" pattern="^[A-Za-zА-Яа-я -]+$" required>
+        <label id="lastNameError" class="errorLabel">Поле 'Фамилия' должно содержать только буквы русского и латинского алфавита</label>
+      </div>
+      <div class="wrapper">
+        <label class="divForLabel" for="firstName" >Имя:</label>
+        <input id="firstName" class="input" type="text" name="firstName" th:value="${admin.firstName}" pattern="^[A-Za-zА-Яа-я -]+$" required>
+        <label id="firstNameError" class="errorLabel">Поле 'Имя' должно содержать только буквы русского и латинского алфавита</label>
+      </div>
+      <div class="wrapper">
+        <label class="divForLabel">Пароль:</label>
+        <input id="password" class="input" type="password" name="password" th:value="${admin.password}" pattern="^(?=.*[A-Z].*[A-Z])(?=.*[0-9])(?=.*[a-z])[0-9a-zA-Z]{8,30}$" required>
+        <label id="passwordError" class="errorLabel">Пароль должен содержать хотя бы 2 заглавные буквы латинского алфавита, строчные и цифры (симв > 8)</label>
+      </div>
+      <div id="passwordConfirmationDiv" class="wrapper">
+          <label class="divForLabel confirm">Подтверждение пароля:</label>
+          <input id="passwordConfirmation" class="input" type="password" name="pass">
+          <label id="passwordConfirmationError" class="errorLabel">Поле 'Подтверждение пороля' не совпадает с полем 'Пароль'</label>
+      </div>
+      <button id="change" type="submit">Изменить данные</button>
+    </form>
+  </div>
+</div>
+</body>
+</html>

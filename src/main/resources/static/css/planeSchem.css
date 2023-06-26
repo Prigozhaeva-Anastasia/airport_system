@@ -1,0 +1,83 @@
+#background {
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    min-height: 657px;
+}
+#upperLeftWingOfAirplane {
+    width: 70px;
+    height: 70px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+#upperRightWingOfAirplane {
+    width: 70px;
+    height: 70px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+#bottomLeftWingOfAirplane {
+    width: 70px;
+    height: 70px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+#bottomRightWingOfAirplane {
+    width: 70px;
+    height: 70px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+#scheme {
+    display: flex;
+    flex-direction: wrap;
+    justify-content: center;
+    color: white;
+    position: relative;
+    top: 60px;
+}
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: wrap;
+    width: 370px;
+    height: 500px;
+    font-family: "Century751 SeBd BT";
+}
+.left {
+    margin-right: 100px;
+}
+.right {
+    margin-left: 100px;
+}
+button {
+    color: white;
+    border: none;
+}
+#upperLeftWingOfAirplane:hover, #bottomLeftWingOfAirplane:hover, #upperRightWingOfAirplane:hover, #bottomRightWingOfAirplane:hover {
+    background-color: rgba(143, 52, 228, 0.4);
+}
+.businessClass {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: wrap;
+    width: 200px;
+}
+#designations {
+    position: absolute;
+    top: 500px;
+    left: 635px;
+    font-family: "Century751 SeBd BT";
+}

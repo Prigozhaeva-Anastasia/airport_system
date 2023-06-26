@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="template">
+<head>
+  <meta charset="UTF-8">
+  <title>Добавление прямого рейса</title>
+  <link th:href="@{/css/styles.css}" rel="stylesheet">
+  <script type="text/javascript" src="../js/flights.js" th:src="@{/js/flight.js}" charset="utf-8"></script>
+</head>
+<body class="mainFont">
+<div layout:fragment="content1">
+  <div class="col-md-6 offset-3 mt-3">
+    <form id="form" class="form-control" method="post" th:action="@{save}" >
+      <div class="mb-3 mt-3">
+        <label for="flightNumber" class="form-label">Номер рейса:</label>
+        <input id="flightNumber" type="text" name="flightNumber" class="form-control" th:errorClass="error" th:field="${directFlight.flightNumber}">
+        <div class="text-danger" th:if="${#fields.hasErrors('directFlight.flightNumber')}" th:errors="${directFlight.flightNumber}">Error</div>
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="airlines" class="form-label">Авиакомпания:</label>
+        <select id="airlines" class="form-select" aria-label="Disabled select example" th:field="${directFlight.airline}">
+          <option th:each="airline :${listAirlines}" th:value="${airline.id}" th:text="${airline.airlineName}"}></option>
+        </select>
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="arrivalAirport" class="form-label">Аэропорт вылета:</label>
+        <input id="arrivalAirport" type="text" name="arrivalAirport" class="form-control" th:errorClass="error" th:field="${directFlight.arrivalAirport}">
+        <div class="text-danger" th:if="${#fields.hasErrors('directFlight.arrivalAirport')}" th:errors="${directFlight.arrivalAirport}">Error</div>
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="departureAirport" class="form-label">Аэропорт посадки:</label>
+        <input id="departureAirport" type="text" name="departureAirport" class="form-control" th:errorClass="error" th:field="${directFlight.departureAirport}">
+        <div class="text-danger" th:if="${#fields.hasErrors('directFlight.departureAirport')}" th:errors="${directFlight.departureAirport}">Error</div>
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="arrivalCity" class="form-label">Город вылета:</label>
+        <input id="arrivalCity" type="text" name="arrivalCity" class="form-control" th:errorClass="error" th:field="${directFlight.arrivalCity}">
+        <div class="text-danger" th:if="${#fields.hasErrors('directFlight.arrivalCity')}" th:errors="${directFlight.arrivalCity}">Error</div>
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="departureCity" class="form-label">Город посадки:</label>
+        <input id="departureCity" type="text" name="departureCity" class="form-control" th:errorClass="error" th:field="${directFlight.departureCity}">
+        <div class="text-danger" th:if="${#fields.hasErrors('directFlight.departureCity')}" th:errors="${directFlight.departureCity}">Error</div>
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="arrivalDate" class="form-label">Дата вылета:</label>
+        <input id="arrivalDate" type="date" name="arrivalDate" class="form-control" th:errorClass="error" th:field="${directFlight.arrivalDate}">
+        <div class="text-danger" th:if="${#fields.hasErrors('directFlight.arrivalDate')}" th:errors="${directFlight.arrivalDate}">Error</div>
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="departureDate" class="form-label">Дата посадки:</label>
+        <input id="departureDate" type="date" name="departureDate" class="form-control" th:errorClass="error" th:field="${directFlight.departureDate}">
+        <div class="text-danger" th:if="${#fields.hasErrors('directFlight.departureDate')}" th:errors="${directFlight.departureDate}">Error</div>
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="arrivalTime" class="form-label">Время вылета:</label>
+        <input id="arrivalTime" type="time" name="arrivalTime" class="form-control" th:errorClass="error" th:field="${directFlight.arrivalTime}">
+        <div class="text-danger" th:if="${#fields.hasErrors('directFlight.arrivalTime')}" th:errors="${directFlight.arrivalTime}">Error</div>
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="departureTime" class="form-label">Время посадки:</label>
+        <input id="departureTime" type="time" name="departureTime" class="form-control" th:errorClass="error" th:field="${directFlight.departureTime}">
+        <div class="text-danger" th:if="${#fields.hasErrors('directFlight.departureTime')}" th:errors="${directFlight.departureTime}">Error</div>
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="priceOfTickets" class="form-label">Стоимость билета:</label>
+        <input id="priceOfTickets" type="text"  name="priceOfTickets" class="form-control" th:field="${directFlight.priceOfTickets}" pattern="^\d+(\.\d{0,2})?$" required>
+        <label id="errorLabel" class="errorLabel">Поле 'Стоимость билета' должно содержать целочисленные значения и дробные в формате __.__</label>
+      </div>
+      <button id="create" type="submit" class="btn btn-primary">Добавить</button>
+    </form>
+  </div>
+</div>
+</body>
+</html>

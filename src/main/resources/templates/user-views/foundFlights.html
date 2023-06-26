@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="template">
+<head>
+    <title>Рейсы</title>
+    <link th:href="@{/css/foundFlight.css}" rel="stylesheet">
+    <script type="text/javascript" src="../js/foundFlights.js" th:src="@{/js/foundFlighs.js}" charset="windows-1251"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+<div id="background" layout:fragment="content1">
+    <div id="mainDiv" class="card">
+        <div id="head" class="card-header head bg-dark resultOfSearch">Результаты поиска</div>
+        <div id="errorMessage1" class="errorMessage">К сожалению, рейсов или билетов в этот день нет.</div>
+        <div id="errorMessage2" class="errorMessage">Пожалуйста, выберите другую дату или измените параметры поиска.
+        </div>
+        <div id="wrapper" class="card-body" th:each="flight: ${listFlights}">
+            <div id="divForFlightInf">
+                <div class="d-flex justify-content-around fLine">
+                    <div class="time" th:text="${#temporals.format(flight.getArrivalTime(), 'HH:mm')}"></div>
+                    <div>
+                        <i class="fa fa-plane" aria-hidden="true"></i>
+                        <div id="line"></div>
+                    </div>
+                    <div class="time" th:text="${#temporals.format(flight.getDepartureTime(), 'HH:mm')}"></div>
+                </div>
+                <div class="d-flex justify-content-start sLine">
+                    <table>
+                        <tr>
+                            <td class="td1 margin-left airport">Аэропорт</td>
+                            <td class="td2"><span
+                                    th:text="${flight.getArrivalCity()}"></span><span> - </span><span
+                                    th:text="${flight.getDepartureCity()}"></span></td>
+                            <td class="td3 airport">Аэропорт</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="d-flex justify-content-start sLine">
+                    <table>
+                        <tr>
+                            <td class="td1" th:text="${flight.getArrivalAirport()}"></td>
+                            <div th:if="${condition}">
+                                <td class="td2"><span id="countOfTransfers"
+                                                      th:text="${flight.getCountOfTransfers()}"> </span>
+                                    <span id="spanOfTransfers"> пересадка</span></td>
+                            </div>
+                            <div th:unless="${condition}">
+                                <td class="td2" id="transfers">Без пересадок</td>
+                            </div>
+                            <td class="td3" th:text="${flight.getDepartureAirport()}"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="sLine">
+                    <div id="airline" class="margin-left airport">Авиакомпания</div>
+                    <div class="wr">
+                        <div id="img"><img class="margin-left" th:src="${flight.getAirline().getPathToImg()}" alt="Изображение"></div>
+                        <a class="btn messages"
+                           th:href="@{/mainForUser/reviews(airlineId=${flight.getAirline().getId()})}"></a>
+                        <form method="post" th:action="@{/mainForUser/planeScheme(flightNumber=${flight.getFlightNumber()})}">
+                            <button type="submit" id="messagesBtn" class="btn"><span th:text="${flight.getPriceOfTickets()}"></span><span>   BYN</span></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="wrapDiv">
+            <div id="timeOnWayDiv" th:each="timeOnWay: ${listDurations}">
+                <div id="timeOnWay" class="position-top">
+                    <label th:text="${timeOnWay}"></label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

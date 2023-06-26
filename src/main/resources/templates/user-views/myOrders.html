@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="template">
+<head>
+    <title>Мои заказы</title>
+    <link th:href="@{/css/myOrders.css}" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body class="mainFont">
+<div layout:fragment="content1">
+    <div id="label">Заказы</div>
+    <table id="btnTable">
+        <tr>
+            <td class="td">
+                <a id="active" class="nav-link dropdown-toggle menu" href="#" role="button" data-bs-toggle="dropdown">Действующие</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" th:href="@{/mainForUser/myOrders/activeDirectAirTickets}">Прямые</a>
+                    </li>
+                    <li><a class="dropdown-item"
+                           th:href="@{/mainForUser/myOrders/activeTransitAirTickets}">Транзитные</a>
+                    </li>
+                </ul>
+            </td>
+            <td class="td">
+                <a id="archives" class="nav-link dropdown-toggle menu" href="#" role="button"
+                   data-bs-toggle="dropdown">Архивы</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" th:href="@{/mainForUser/myOrders/archiveDirectAirTickets}">Прямые</a>
+                    </li>
+                    <li><a class="dropdown-item"
+                           th:href="@{/mainForUser/myOrders/archiveTransitAirTickets}">Транзитные</a>
+                    </li>
+                    <li><a class="dropdown-item"
+                           th:href="@{/mainForUser/myOrders/remoteTickets}">Отмененные</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+    <div id="table">
+        <div class="container mt-3">
+            <table class="table bg-dark">
+                <thead class="line text-light">
+                <tr id="th" class="text-center">
+                    <th>Номер рейса</th>
+                    <th colspan="2">Направление</th>
+                    <th>Дата</th>
+                    <th>Время</th>
+                    <th>Тип билета</th>
+                    <th>Цена, BYN</th>
+                    <th>Действия</th>
+                </tr>
+                </thead>
+                <div th:if="${condition}">
+                    <tbody>
+                    <tr class="text-center" th:each="airTicket:${listAirTicketsForDirectFlight}">
+                        <td class="centuryFont" th:text="${airTicket.getDirectFlight().getFlightNumber()}"></td>
+                        <td th:text="${airTicket.getDirectFlight().getArrivalCity()}"></td>
+                        <td th:text="${airTicket.getDirectFlight().getDepartureCity()}"></td>
+                        <td class="centuryFont"
+                            th:text="${#temporals.format(airTicket.getDirectFlight().getArrivalDate(), 'dd.MM.yyyy')}"></td>
+                        <td class="centuryFont"
+                            th:text="${#temporals.format(airTicket.getDirectFlight().getArrivalTime(), 'HH:mm')}"></td>
+                        <td th:text="${airTicket.getTypeOfTicket()}"></td>
+                        <td class="centuryFont" th:text="${airTicket.getPrice()}"></td>
+                        <td>
+                            <a th:if="${isActive}" class="btn btn-danger"
+                               onclick="return confirm('Вы действительно хотите осуществить возврат выбранного билета?')"
+                               th:href="@{/mainForUser/chooseCardToReturn(airTicketId=${airTicket.getId()})}"></a>
+                            <a class="btn btn-outline-light"
+                               th:href="@{/airTickets/formForMoreDetails(airTicketId=${airTicket.getId()})}">Подробнее</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </div>
+                <div th:unless="${condition}">
+                    <tbody>
+                    <tr class="text-center" th:each="airTicket:${listAirTicketsForTransitFlight}">
+                        <td class="centuryFont" th:text="${airTicket.getTransitFlight().getFlightNumber()}"></td>
+                        <td th:text="${airTicket.getTransitFlight().getArrivalCity()}"></td>
+                        <td th:text="${airTicket.getTransitFlight().getDepartureCity()}"></td>
+                        <td class="centuryFont"
+                            th:text="${#temporals.format(airTicket.getTransitFlight().getArrivalDate(), 'dd.MM.yyyy')}"></td>
+                        <td class="centuryFont"
+                            th:text="${#temporals.format(airTicket.getTransitFlight().getArrivalTime(), 'HH:mm')}"></td>
+                        <td th:text="${airTicket.getTypeOfTicket()}"></td>
+                        <td class="centuryFont" th:text="${airTicket.getPrice()}"></td>
+                        <td>
+                            <a th:if="${isActive}" class="btn btn-danger"
+                               onclick="return confirm('Вы действительно хотите осуществить возврат выбранного билета?')"
+                               th:href="@{/mainForUser/chooseCardToReturn(airTicketId=${airTicket.getId()})}"></a>
+                            <a class="btn btn-outline-light"
+                               th:href="@{/airTickets/formForMoreDetails(airTicketId=${airTicket.getId()})}">Подробнее</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </div>
+                <div th:if="${isRemote}">
+                    <tbody>
+                    <tr th:each="airTicket:${listAirTickets}">
+                        <td id="cancellationOfAirTicket" colspan="7">Билет №<span th:text="${airTicket.getId()}"></span> отменен</td>
+                        <td>
+                            <a class="btn btn-outline-light" th:href="@{/airTickets/formForRemoteAirTicket}">Подробнее</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </div>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

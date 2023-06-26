@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="template">
+<head>
+    <title>Редактирование личных данных</title>
+    <link th:href="@{/css/formUpdatePersonalData.css}" rel="stylesheet">
+    <script type="text/javascript" src="../js/formUpdatePersonalData.js" th:src="@{/js/formUpdatePersonalData.js}" charset="windows-1251"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+<div layout:fragment="content1">
+    <div id="mainDiv">
+        <form id="formUpdate" method="post" th:action="@{/mainForUser/update(userId=${passenger.getUser().getId()}, date=${date}, lastName=${passenger.getUser().getLastName()}, firstName=${passenger.getUser().getFirstName()}, password=${passenger.getUser().getPassword()})}" th:object="${passenger}">
+            <input type="text" name="id" th:value="${passenger.getId()}" hidden>
+            <table>
+                <tr>
+                    <td>Фамилия</td>
+                    <td>
+                        <input id="lastName" type="text" name="lastName" th:value="${passenger.getUser().getLastName()}" pattern="^[A-Za-zА-Яа-я -]+$" required>
+                        <label id="lastNameError" class="errorLabel">Поле должно содержать только буквы</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Имя</td>
+                    <td>
+                        <input id="firstName" type="text" name="firstName" th:value="${passenger.getUser().getFirstName()}" pattern="^[A-Za-zА-Яа-я -]+$" required>
+                        <label id="firstNameError" class="errorLabel">Поле должно содержать только буквы</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Пол</td>
+                    <td>
+                        <input id="gender" name="gender" type="text" th:value="${passenger.getGender()}" hidden="hidden">
+                        <input class="form-check-input" type="radio" name="gender" id="male" value="мужской" checked>
+                        <label class="form-check-label" for="male">Мужской</label>
+                        <input class="form-check-input" type="radio" name="gender" id="female" value="женский">
+                        <label class="form-check-label" for="female">Женский</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Дата рождения</td>
+                    <td>
+                        <input id="date" type="date" name="date" class="centuryFont" th:value="${date}">
+                        <label id="dateError" class="errorLabel">Поле не должно быть пустым</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Гражданство</td>
+                    <td>
+                        <input id="citizenship" type="text" name="citizenship" th:value="${passenger.getCitizenship()}" pattern="^[A-Za-zА-Яа-я -]+$" required>
+                        <label id="citizenshipError" class="errorLabel">Поле должно содержать только буквы</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Номер паспорта</td>
+                    <td>
+                        <input id="passportNumber" type="text" class="centuryFont" name="passportNumber" th:value="${passenger.getPassportNumber()}" pattern="^[A-Z]{2}\d{7}$" required>
+                        <label id="passportNumberError" class="errorLabel">Поле должно 2 заглавные буквы латинского алфавита и 7 цифр</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Номер телефона</td>
+                    <td>
+                        <input id="phoneNumber" type="text" class="centuryFont" name="phoneNumber" th:value="${passenger.getPhoneNumber()}" pattern="^(\+375|80)(29|25|44|33)(\d{3})(\d{2})(\d{2})$" required>
+                        <label id="phoneNumberError" class="errorLabel">Поле должно быть введено в формате +375(29)(44)(33)(25)_______</label>
+                    </td>
+                </tr>
+                <tr id="hiddenTR3">
+                    <td><button id="changePassword" type="button" class="btn">Изменить пароль</button></td>
+                    <td></td>
+                </tr>
+                <tr id="hiddenTR1">
+                    <td>Пароль</td>
+                    <td>
+                        <input id="password" type="password" name="password" th:value="${passenger.getUser().getPassword()}" pattern="^(?=.*[A-Z].*[A-Z])(?=.*[0-9])(?=.*[a-z])[0-9a-zA-Z]{8,30}$" required>
+                        <label id="passwordError" class="errorLabel">Поле должно содержать хотя бы 2 заглавные буквы латинского алфавита, строчные и цифры (симв > 8)</label>
+                    </td>
+                </tr>
+                <tr id="hiddenTR2">
+                    <td>Подтверждение пароля</td>
+                    <td>
+                        <input id="passwordConfirmation" type="password" name="pas" th:value="${confirmation}" required>
+                        <label id="passwordConfirmationError" class="errorLabel">Поле 'Подтверждение пароля' не совпадает с полем 'Пароль'</label>
+                    </td>
+                </tr>
+            </table>
+            <button id="editBtn" type="submit" class="btn">Редактировать</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

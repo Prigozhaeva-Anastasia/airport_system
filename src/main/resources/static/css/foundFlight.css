@@ -1,0 +1,140 @@
+#background {
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    min-height: 657px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /*align-items: center;*/
+}
+#mainDiv {
+    background-color: #737272;
+    width: 900px;
+    border-radius: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.card-header {
+    color: white;
+    font-size: 18px;
+}
+#head {
+    border-radius: 20px 20px 2px 2px;
+}
+#divForFlightInf {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    width: 682px;
+    height: 260px;
+    color: white;
+    font-size: 18px;
+    font-family: "Century751 SeBd BT";
+
+}
+#wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+#line {
+    width: 120px;
+    height: 1px;
+    background-color: white;
+}
+#timeOnWay {
+    font-size: 16px;
+}
+.time {
+    font-size: 32px;
+}
+.fLine {
+    margin-top: 15px;
+}
+.sLine {
+    margin-top: 15px;
+}
+.airport {
+    color: #c76bfc;
+}
+.margin-left {
+    margin-left: 65px;
+}
+img {
+    margin-top: 10px;
+    width: 130px;
+    height: 34px;
+}
+.messages:before{
+    content: "\f086";
+    font-family: FontAwesome;
+    font-size: 20px;
+    color: #c76bfc;
+    position: relative;
+    right: 2px;
+    top: -2px;
+}
+.messages{
+    text-decoration: none;
+    position: relative;
+    top: -32px;
+    margin-left: 220px;
+    width: 40px;
+    height: 35px;
+}
+.messages:hover {
+    background-color: rgba(166, 165, 165, 0.6);
+}
+#messagesBtn {
+    font-size: 15px;
+    color: white;
+    background-color: #7C44AA;
+    border-radius: 20px;
+    width: 110px;
+    height: 35px;
+    position: relative;
+    top: -68px;
+    left: 535px;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0);
+}
+#messagesBtn:hover{
+    background-color: rgba(143, 52, 228, 0.4);
+}
+#errorMessage1 {
+    display: none;
+    margin-top: 100px;
+    font-family: Georgia;
+    font-size: 22px;
+    font-weight: bold;
+    font-color: black;
+}
+#errorMessage2 {
+    display: none;
+    font-family: Georgia;
+    font-size: 18px;
+    font-color: #232222FF;
+}
+.errorMessage {
+    text-align: center;
+}
+#timeOnWayDiv {
+    color:white;
+    font-family: "Century751 SeBd BT";
+}
+.position-top {
+    position: relative;
+    top: -260px;
+    margin-bottom: 270px;
+    margin-left: 417px;
+}
+table {
+    margin-left: 64px;
+}
+.td1 {
+    width: 220px;
+}
+.td2 {
+    width: 250px;
+}
+.td3 {
+    width: 140px;
+}

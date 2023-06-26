@@ -1,0 +1,33 @@
+.mainFont {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+#title {
+    color: white;
+    font-family: Georgia;
+    font-size: 27px;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+#video {
+    margin-top: 50px;
+    margin-left: 100px;
+}
+#mainDiv {
+    width: 500px;
+    height: 450px;
+    background-color: rgba(87, 87, 87, 0.7);
+    border-radius: 30px;
+    margin-left: 100px;
+    margin-top: 10px;
+}
+#text {
+    margin-top: 60px;
+    margin-left: 45px;
+    width: 400px;
+    color: white;
+    font-family: Georgia;
+    font-size: 18px;
+    text-align: justify;
+    text-indent: 40px;
+}

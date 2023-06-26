@@ -1,0 +1,208 @@
+body {
+    background-image: url("../images/img/fontInfo.png");
+    background-size: 1560px 900px;
+}
+#mainDiv {
+    padding-bottom: 30px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 915px;
+    min-height: 607px;
+    margin-top: 27px;
+    margin-left: 300px;
+}
+#myCardsLabel {
+    position: relative;
+    top: 20px;
+    left: 45px;
+    color: white;
+    font-family: Georgia;
+    font-size: 35px;
+}
+#card {
+    margin-bottom: 30px;
+    position: relative;
+    top: 50px;
+    left: 40px;
+    width: 287px;
+    height: 155px;
+    background-color: rgba(143, 52, 228, 0.7);
+    border-radius: 20px;
+    color: white;
+    font-family: "Century751 SeBd BT";
+}
+#cardForAdding {
+    position: relative;
+    top: 27px;
+    width: 287px;
+    height: 155px;
+    background-color: rgba(143, 52, 228, 0.7);
+    border-radius: 20px;
+    color: white;
+    font-family: "Century751 SeBd BT";
+}
+#visa {
+    margin-top: -32px;
+    padding-left: 20px;
+}
+#balance {
+    font-size: 23px;
+    text-align: center;
+    padding-top: 20px;
+}
+#cardNumberAndTermOfUse {
+    font-size: 14px;
+    padding-top: 30px;
+    padding-left: 15px;
+
+}
+#cardNumber {
+}
+#termOfUse {
+    padding-left: 45px;
+}
+#deleteBtn {
+    position: relative;
+    margin-left: 190px;
+}
+#deleteBtn:before{
+    content: "\f014";
+    font-family: FontAwesome;
+    font-size: 18px;
+    color: black;
+}
+#addBtn {
+    position: relative;
+    top: 0px;
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+}
+#deleteBtn:hover {
+    background-color: rgba(166, 165, 165);
+}
+#addBtn:hover {
+    background-color: rgba(166, 165, 165);
+}
+#numberError, #monthError, #yearError {
+    display: none;
+}
+#hidden {
+    display: none;
+}
+@charset "UTF-8";
+.errorLabel {
+    color: rgba(255, 96, 96);
+}
+.error {
+    border-bottom: 1px solid rgba(255, 63, 63, 0.7);
+}
+input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #7C44AA;
+    color: white;
+    font-size: 20px;
+    font-family: "Century751 SeBd BT";
+}
+input:focus {
+    outline: none;
+    border-bottom: 1px solid white;
+}
+input::-webkit-input-placeholder { color: rgba(255, 255, 255, 0.5); }
+#newCard {
+    position: fixed;
+    left: 800px;
+    top: 120px;
+    font-size: 22px;
+    font-family: Georgia;
+}
+#newCardBtn{
+    background-color: transparent;
+    border: none;
+    color: white;
+}
+#newCardBtn:before{
+    content: "\f09d";
+    font-family: FontAwesome;
+    font-size: 25px;
+    color: white;
+}
+#newCardBtn:hover {
+    background-color: rgba(166, 165, 165);
+    color: rgba(143, 52, 228, 0.7);
+}
+#number {
+    position: relative;
+    top: 30px;
+    left: 40px;
+    width: 200px;
+}
+#month {
+    position: relative;
+    top: 60px;
+    left: 65px;
+    width: 50px;
+}
+#year {
+    position: relative;
+    left: 85px;
+    top: 61px;
+    width: 50px;
+}
+#delimiter {
+    position: relative;
+    top: 68px;
+    left: 75px;
+}
+#addNewCard {
+    position: relative;
+    top: 100px;
+    left:73px;
+    font-size: 15px;
+    font-family: Georgia;
+    width: 140px;
+}
+#error {
+    display: none;
+    position: relative;
+    top: 7px;
+    font-size: 18px;
+}
+.close {
+    background-color: transparent;
+    border: none;
+}
+.close:hover {
+    background-color: rgba(166, 165, 165);
+}
+.add {
+    width: 60px;
+}
+#add{
+    background-color: #A358E0;
+    color: white;
+    font-family: Georgia;
+    border: none;
+    position: relative;
+    top: 6px;
+    left: 400px;
+}
+#add:hover{
+    background-color: #7C44AA;
+}
+#card-balance {
+    position: relative;
+    top: 0px;
+    left: 20px;
+    width: 320px;
+    font-size: 18px;
+}
+#bynLabel {
+    position: relative;
+    top: 3px;
+    left: 25px;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="template">
+<head>
+    <title>Пассажиры</title>
+    <link th:href="@{/css/passengerDetail.css}" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+<div layout:fragment="content1">
+    <div id="mainDiv">
+        <div id="imgDiv">
+            <img src="/images/img/imgPassenger.png">
+        </div>
+        <div id="table">
+            <table>
+                <tr>
+                    <td class="col1">Фамилия</td>
+                    <td class="col2" th:text="${passenger.getUser().getLastName()}"></td>
+                </tr>
+                <tr>
+                    <td class="col1">Имя</td>
+                    <td class="col2" th:text="${passenger.getUser().getFirstName()}"></td>
+                </tr>
+                <tr>
+                    <td class="col1">Пол</td>
+                    <td class="col2" th:text="${passenger.getGender()}"></td>
+                </tr>
+                <tr>
+                    <td class="col1">Дата рождения</td>
+                    <td class="col2 font" th:text="${#temporals.format(passenger.getDateOfBirth(), 'dd.MM.yyyy')}"></td>
+                </tr>
+                <tr>
+                    <td class="col1">Гражданство</td>
+                    <td class="col2" th:text="${passenger.getCitizenship()}"></td>
+                </tr>
+                <tr>
+                    <td class="col1">Номер паспорта</td>
+                    <td class="col2 font" th:text="${passenger.getPassportNumber()}"></td>
+                </tr>
+                <tr>
+                    <td class="col1">Номер телефона</td>
+                    <td class="col2 font" th:text="${passenger.getPhoneNumber()}"></td>
+                </tr>
+                <tr>
+                    <td class="col1">Email</td>
+                    <td class="col2 font" th:text="${passenger.getUser().getEmail()}"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

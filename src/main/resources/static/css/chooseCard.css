@@ -1,0 +1,94 @@
+#background {
+    padding-top: 40px;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    min-height: 657px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 18px;
+    color: white;
+    font-family: Georgia;
+}
+#mainDiv {
+    width: 822px;
+    min-height: 551px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+.card-header {
+    color: white;
+    font-size: 18px;
+}
+.card-body {
+    padding-left:230px;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.card-body:hover {
+    background-color: rgba(166, 165, 165);
+}
+#head {
+    width: 100%;
+    border-radius: 20px 20px 2px 2px;
+}
+#errorMessage1 {
+    display: none;
+    margin-top: 100px;
+    font-family: Georgia;
+    font-size: 22px;
+    font-weight: bold;
+    font-color: black;
+}
+#errorMessage2 {
+    display: none;
+    font-family: Georgia;
+    font-size: 18px;
+    font-color: #232222FF;
+}
+.insufficientFunds {
+    position: relative;
+    top: 10px;
+    left: 10px;
+    margin-bottom: 4px;
+    display: none;
+    font-family: Georgia;
+    font-size: 18px;
+}
+.errorMessage {
+    text-align: center;
+}
+#cardBtn{
+    width: 287px;
+    height: 155px;
+    background-color: rgba(143, 52, 228, 0.7);
+    border-radius: 20px;
+    border: none;
+    color: white;
+    font-family: "Century751 SeBd BT";
+}
+#visa {
+    margin-top: -2px;
+    margin-left: -185px;
+}
+.balance {
+    font-size: 23px;
+    text-align: center;
+    padding-top: 20px;
+}
+.balanceLabel {
+    font-size: 23px;
+    text-align: center;
+    padding-top: 20px;
+}
+#cardNumberAndTermOfUse {
+    font-size: 14px;
+    padding-top: 30px;
+    padding-left: 15px;
+
+}
+#termOfUse {
+    padding-left: 45px;
+}

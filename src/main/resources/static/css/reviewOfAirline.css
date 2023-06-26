@@ -1,0 +1,69 @@
+#background {
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    min-height: 657px;
+}
+#mainLabel {
+    font-size: 28px;
+    color: white;
+    font-family: Georgia;
+    padding-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+#airlineName {
+    color: #8f34e4;
+}
+#remark {
+    background: transparent;
+    border: none;
+    width: 500px;
+    border-bottom: 1px solid #8f34e4;
+    color: white;
+    font-size: 18px;
+    font-family: Georgia;
+}
+#remark:focus {
+    outline: none;
+    border-bottom: 1px solid white;
+}
+#wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+#divForReview {
+    color: white;
+    font-size: 18px;
+    font-family: Georgia;
+    margin-top: 30px;
+    width: 900px;
+}
+.rating {
+    font-family: "Century751 SeBd BT";
+    color: #8f34e4;
+}
+#passenger {
+    margin-left: 670px;
+    color: #d48afa;
+    font-size: 21px;
+    margin-bottom: 40px;
+}
+.criteriaForEvaluation {
+    margin-bottom: 20px;
+}
+i {
+    font-size: 30px;
+    color: yellow;
+}
+#overallRating {
+    font-size: 28px;
+    font-family: "Century751 SeBd BT";
+    color: white;
+}
+#ratingIcon {
+    position: relative;
+    top: -70px;
+    margin-left: 1123px;
+}

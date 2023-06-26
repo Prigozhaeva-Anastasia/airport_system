@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="template">
+<head>
+  <title>Табло вылетов/прилетов</title>
+  <link th:href="@{/css/scoreboard.css}" rel="stylesheet">
+  <script type="text/javascript" src="../js/scoreboard.js" th:src="@{/js/scoreboard.js}" charset="windows-1251"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body class="mainFont">
+<div layout:fragment="content1">
+  <div class="container mt-3">
+    <div id="label">Табло вылетов/прилетов</div>
+    <div id="divForBtns">
+      <a id="departure" class="btn departure" th:href="@{/mainForUser/scoreboard}"></a>
+      <a id="arrival" class="btn arrival" th:href="@{/mainForUser/arrivalFlights}"></a>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <table class="table">
+          <thead class="line">
+          <tr class="text-center">
+            <th>Авиакомпания</th>
+            <th>Номер рейса</th>
+            <th id="directionTH">Откуда</th>
+            <th id="timeTH">Время прилета</th>
+            <th>Статус</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr class="text-center" th:each="flight:${listFlights}">
+            <td>
+              <img width="110" th:src="${flight.getAirline().getPathToImg()}" alt="Изображение">
+            </td>
+            <td th:text="${flight.getFlightNumber()}"></td>
+            <td th:if="${isArrivalsBoard}" th:text="${flight.getArrivalCity()}"></td>
+            <td th:if="${isArrivalsBoard}" class="time" th:text="${#temporals.format(flight.getDepartureTime(), 'HH:mm')}"></td>
+            <td th:unless="${isArrivalsBoard}" th:text="${flight.getDepartureCity()}"></td>
+            <td th:unless="${isArrivalsBoard}" class="time" th:text="${#temporals.format(flight.getArrivalTime(), 'HH:mm')}"></td>
+            <td class="status"></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

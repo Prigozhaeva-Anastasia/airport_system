@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="template">
+<head>
+    <title>Мои карты</title>
+    <link th:href="@{/css/myCards.css}" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../js/myCards.js" th:src="@{/js/myCards.js}" charset="UTF-8"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+<div layout:fragment="content1">
+    <div id="mainDiv">
+        <div id="myCardsLabel">Мои карты</div>
+        <div th:each="card:${listCards}">
+            <span id="cardId" th:text="${card.getId()}" hidden="hidden"></span>
+            <div id="card">
+                <a id="deleteBtn" class="btn"
+                   onclick="return confirm('Вы действительно хотите удалить выбранную карту?')"
+                   th:href="@{/mainForUser/cards/delete(cardId=${card.getId()})}"></a>
+                <button id="addBtn" type="button" class="btn" data-toggle="modal" data-target="#modalReplenishment"
+                        th:data-cardId="${card.getId()}"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
+                <div class="modal fade" id="modalReplenishment" tabindex="-1" role="dialog" aria-labelledby="cardLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content bg-dark">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="cardLabel">Пополнение баланса</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <input type="hidden" id="card-id">
+                                    <input type="text" id="card-balance" placeholder="Введите сумму для пополнения баланса" pattern="^\\d+(\\.\\d+)?$">
+                                    <span id="bynLabel">   BYN</span>
+                                </form>
+                                <button id="add" type="button" class="btn btn-primary add">Ок</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="visa">VISA</div>
+                <div id="balance"><span th:text="${card.getBalance()}"></span><span> BYN</span></div>
+                <div id="cardNumberAndTermOfUse"><span id="cardNumber" class="cardNumber"
+                                                       th:text="${card.getNumber()}"></span><span>       </span><span
+                        id="termOfUse" th:text="${card.getMonth()}"></span><span> / </span><span
+                        th:text="${card.getYear()}"></span></div>
+            </div>
+        </div>
+        <div>
+            <div id="newCard">
+                <form>
+                    <button id="newCardBtn" type="button"><span>    Новая карта</span></button>
+                </form>
+                <div id="error" class="text-danger">Карта с таким номером уже существует</div>
+                <div id="hidden">
+                    <div id="cardForAdding">
+                        <form method="post" th:action="@{/cards/save}">
+                            <div>
+                                <input id="number" type="text" name="number" th:field="${card.number}" placeholder="      Номер карты" required>
+                            </div>
+                            <div>
+                                <input id="month" type="text" name="month" th:field="${card.month}" placeholder=" мм" required>
+                                <span id="delimiter"> / </span>
+                                <input id="year" type="text" name="year" th:field="${card.year}" placeholder=" гггг" required>
+                            </div>
+                            <button id="addNewCard" type="submit" class="btn btn-outline-light">Добавить карту</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

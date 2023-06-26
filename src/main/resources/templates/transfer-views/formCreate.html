@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="template">
+<head>
+  <meta charset="UTF-8">
+  <title>Добавление пересадок</title>
+  <link th:href="@{/css/styles.css}" rel="stylesheet">
+    <script type="text/javascript" src="../js/transferss.js" th:src="@{/js/transfers.js}" charset="windows-1251"></script>
+</head>
+<body class="mainFont">
+<div layout:fragment="content1">
+  <div class="col-md-6 offset-3 mt-3">
+    <form id="form" class="form-control" method="post" th:action="@{save(transitFlightId=${transitFlight.getId()})}">
+      <div id="transfersLabel">Пересадки</div>
+      <div class="mb-3 mt-3">
+        <label for="flightNumber" class="form-label">Номер рейса:</label>
+        <input id="flightNumber" type="text" name="flightNumber" class="form-control" th:value="${transitFlight.getFlightNumber()}" disabled>
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="direction" class="form-label">Направление:</label>
+        <input id="direction" type="text" name="direction" class="form-control" th:value="${direction}" disabled>
+      </div>
+      <div class="mb-3 mt-3 form-outline">
+        <label class="form-label" for="countOfTransfers">Количество пересадок</label>
+        <input style="width: 4rem;" min="1" max="10" type="number" name="transferList" id="countOfTransfers" class="form-control" th:value="${transitFlight.getCountOfTransfers()}" disabled/>
+      </div>
+        <div class="mb-3 mt-3">
+            <label for="nameOfCity" class="form-label">Город пересадки:</label>
+            <input id="nameOfCity" type="text" name="nameOfCity" class="form-control" pattern="^$|^[A-Za-zА-Яа-я -]+$" th:field="${transfer.nameOfCity}" required>
+            <label id="nameOfCityError" class="errorLabel">Поле 'Город пересадки' должно содержать только буквы русского и латинского алфавита</label>
+        </div>
+      <div class="mb-3 mt-3">
+        <label for="transferTime" class="form-label">Время пересадки:</label>
+        <input id="transferTime" type="time" name="arrivalTime" class="form-control" th:field="${transfer.arrivalTime}" required>
+          <label id="transferError" class="errorLabel">Поле не должно быть пустым</label>
+      </div>
+      <div class="divTransfer mb-3 mt-3"><button id="next" type="submit" class="btn btn-primary"></button></div>
+    </form>
+  </div>
+</div>
+</body>
+</html>

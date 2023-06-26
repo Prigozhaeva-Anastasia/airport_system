@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="template">
+<head>
+  <title>Правила</title>
+  <link th:href="@{/css/rulesForPassengers.css}" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body class="mainFont">
+<div layout:fragment="content1">
+  <div id="title">Правила поведения в самолете. Инструкции по безопасности пассажиров</div>
+  <div style="display: flex">
+  <iframe id="video" width="620" height="365" src="https://www.youtube.com/embed/wl3J6nrIl6I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  <div id="mainDiv">
+    <div id="text">
+      Согласно статистическим данным, каждый второй турист для путешествий выбирает воздушные судна. Такой способ передвижения
+      позволяет экономить время. Также он считается самым безопасным. Авиакомпании установили свои правила поведения в самолете.
+      Их должен соблюдать каждый, чтобы не возникало неприятных ситуаций.
+    </div>
+  </div>
+  </div>
+</div>
+</body>
+</html>

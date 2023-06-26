@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="template">
+<head>
+    <title>Админ</title>
+    <link th:href="@{/css/adminDetail.css}" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+<div layout:fragment="content1">
+    <div id="mainDiv">
+        <div id="imgDiv">
+            <img src="/images/img/admin.png">
+        </div>
+        <div>
+            <table id="table">
+                <tr>
+                    <td class="col11">Фамилия</td>
+                    <td class="col2" th:text="${admin.getLastName()}"></td>
+                </tr>
+                <tr>
+                    <td class="col11">Имя</td>
+                    <td class="col2" th:text="${admin.getFirstName()}"></td>
+                </tr>
+                <tr>
+                    <td class="col11">Email</td>
+                    <td class="col2 font" th:text="${admin.getEmail()}"></td>
+                </tr>
+            </table>
+            <form method="get" th:action="@{/admin/formUpdate}">
+                <button id="edit" type="submit">Редактировать</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
